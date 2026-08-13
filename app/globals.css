@@ -1,25 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  /* -- Palette: sandstone, terracotta, dusk indigo -- */
-  --color-cream: #ECE0C6;
-  --color-parchment: #E4D3AC;
+  /* -- Palette: sandstone, terracotta, dusk indigo, parchment -- */
+  --color-cream: #F3E7C9;
+  --color-parchment: #E9D9AE;
+  --color-parchment-dark: #D8C08A;
   --color-sandstone: #C9A25E;
   --color-ochre: #C68A3D;
-  --color-terracotta: #B55B3A;
+  --color-terracotta: #B5522E;
+  --color-sunset: #D9722F;
   --color-rose: #A8564F;
   --color-mustard: #D9A441;
+  --color-gold: #E4B366;
   --color-olive: #6B6B3A;
   --color-teal: #3E6B63;
   --color-indigo: #2E3A4E;
   --color-wood: #3B2A1E;
   --color-wood-dark: #241811;
-  --color-ink: #1B140E;
+  --color-ink: #241812;
 
   --font-display: var(--font-fraunces), "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-devanagari: var(--font-yatra), "Yatra One", "Noto Serif Devanagari", serif;
   --font-ui: var(--font-plex-mono), "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --animate-blink: blink 1.6s steps(1) infinite;
   --animate-pulse-slow: pulse-slow 2.4s ease-in-out infinite;
 }
 
@@ -49,50 +52,20 @@
   }
 }
 
-@keyframes static-flicker {
-  0% {
-    opacity: 0;
-  }
-  8% {
-    opacity: 0.9;
-  }
-  20% {
-    opacity: 0.5;
-  }
-  35% {
-    opacity: 0.85;
-  }
-  55% {
-    opacity: 0.3;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes speaker-breathe {
+@keyframes drift {
   0%,
   100% {
-    transform: scale(1);
+    transform: translateX(0);
   }
   50% {
-    transform: scale(1.006);
-  }
-}
-
-@keyframes needle-settle {
-  from {
-    transform: translateX(var(--needle-from, 0));
-  }
-  to {
-    transform: translateX(var(--needle-to, 0));
+    transform: translateX(-1.5%);
   }
 }
 
 html,
 body {
   height: 100%;
-  background: var(--color-wood-dark);
+  background: #241812;
   color: var(--color-cream);
 }
 
@@ -100,11 +73,12 @@ body {
   font-family: var(--font-display);
 }
 
-/* ---------- Background environment ---------- */
+/* ---------- Background environment (the hero) ---------- */
 
-.hero-bg {
+.scene-bg {
   position: fixed;
   inset: 0;
+  z-index: -2;
   background-image: url("/bg/scene-wide.png");
   background-size: cover;
   background-position: center;
@@ -112,79 +86,98 @@ body {
 }
 
 @media (orientation: portrait) {
-  .hero-bg {
+  .scene-bg {
     background-image: url("/bg/scene-tall.png");
   }
 }
 
-/* Fallback painterly desert-dusk gradient shown until real photography
-   is dropped into public/bg/. Safe to remove once assets are supplied. */
-.hero-bg::before {
+/* Painted-gradient stand-in, shown only until real artwork exists at
+   public/bg/scene-wide.png / scene-tall.png (a missing image file simply
+   reveals this layer beneath it — nothing to toggle manually). */
+.scene-fallback {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background:
+    radial-gradient(circle at 78% 38%, rgba(255, 214, 150, 0.9), rgba(255, 170, 90, 0.55) 18%, transparent 40%),
+    linear-gradient(180deg, #7a2f16 0%, #b5522e 22%, #d9722f 42%, #e69648 58%, #7a3d22 78%, #1c120c 100%);
+}
+
+.scene-fallback::after {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse 60% 40% at 75% 30%, rgba(230, 170, 90, 0.35), transparent 60%),
-    linear-gradient(180deg, #4a3624 0%, #7a4a30 30%, #b06a3c 55%, #6b3f2b 80%, #241811 100%);
+  background: linear-gradient(0deg, #120b07 0%, transparent 38%);
+}
+
+/* Only enough overlay for text/UI readability — the scene must dominate. */
+.scene-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(10, 6, 4, 0.28) 0%, rgba(10, 6, 4, 0) 30%, rgba(10, 6, 4, 0.15) 60%, rgba(10, 6, 4, 0.55) 100%);
 }
 
 /* ---------- Grain / paper texture ---------- */
 
-.grain-overlay {
+.paper-grain {
   position: fixed;
   inset: 0;
+  z-index: 0;
   mix-blend-mode: overlay;
-  opacity: 0.2;
+  opacity: 0.14;
   pointer-events: none;
 }
 
-/* ---------- Radio cabinet ---------- */
+/* ---------- Top pill buttons ---------- */
 
-.radio-cabinet {
+.pill-btn {
+  background: rgba(20, 13, 9, 0.55);
+  border: 1px solid rgba(243, 231, 201, 0.15);
+  backdrop-filter: blur(2px);
+  transition: background-color 0.15s ease, transform 0.08s ease;
+}
+
+.pill-btn:hover {
+  background: rgba(20, 13, 9, 0.75);
+}
+
+.pill-btn:active {
+  transform: translateY(1px);
+}
+
+/* ---------- Bottom parchment player ---------- */
+
+.player-parchment {
   background:
-    repeating-linear-gradient(
-      100deg,
-      rgba(0, 0, 0, 0.08) 0px,
-      rgba(0, 0, 0, 0) 2px,
-      rgba(255, 255, 255, 0.03) 3px,
-      rgba(0, 0, 0, 0) 5px
-    ),
-    linear-gradient(160deg, #5a3d29 0%, #402a1b 45%, #2c1c11 100%);
+    radial-gradient(120% 180% at 10% 0%, rgba(255, 255, 255, 0.10), transparent 55%),
+    linear-gradient(160deg, #EBDCB4 0%, #DFC896 45%, #D2B57E 100%);
+  border: 1px solid rgba(60, 38, 20, 0.35);
   box-shadow:
-    inset 0 2px 3px rgba(255, 220, 170, 0.15),
-    inset 0 -10px 24px rgba(0, 0, 0, 0.55),
-    0 18px 40px rgba(0, 0, 0, 0.55),
-    0 2px 0 rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.5);
+    0 20px 45px rgba(10, 6, 3, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
-.speaker-grille {
-  background-image: radial-gradient(rgba(0, 0, 0, 0.65) 1.1px, transparent 1.3px);
-  background-size: 7px 7px;
-  background-color: #1c130c;
-  box-shadow:
-    inset 0 3px 8px rgba(0, 0, 0, 0.7),
-    inset 0 -2px 4px rgba(255, 200, 150, 0.06);
-  animation: speaker-breathe 3.2s ease-in-out infinite;
+.progress-track {
+  background: rgba(59, 38, 24, 0.28);
+  border-radius: 999px;
+  cursor: pointer;
+  touch-action: none;
 }
 
-.dial-glass {
-  background: linear-gradient(180deg, rgba(20, 14, 9, 0.92), rgba(10, 7, 4, 0.96));
-  box-shadow:
-    inset 0 2px 6px rgba(0, 0, 0, 0.8),
-    inset 0 0 0 1px rgba(255, 210, 150, 0.08);
+.progress-fill {
+  background: linear-gradient(90deg, var(--color-terracotta), var(--color-gold));
+  border-radius: 999px;
 }
 
-.knob {
-  background: radial-gradient(circle at 35% 30%, #6b4a30, #2c1c11 70%);
-  box-shadow:
-    inset 0 1px 2px rgba(255, 220, 180, 0.25),
-    inset 0 -3px 5px rgba(0, 0, 0, 0.6),
-    0 3px 6px rgba(0, 0, 0, 0.5);
+.progress-thumb {
+  background: var(--color-ink);
+  box-shadow: 0 0 0 3px rgba(228, 179, 102, 0.55);
 }
 
 .control-btn {
   background: linear-gradient(180deg, #4a3320, #2e1f13);
+  color: var(--color-cream);
   box-shadow:
     inset 0 1px 1px rgba(255, 220, 180, 0.18),
     inset 0 -2px 3px rgba(0, 0, 0, 0.55),
@@ -200,8 +193,13 @@ body {
     inset 0 -1px 1px rgba(255, 220, 180, 0.08);
 }
 
-.static-flicker {
-  animation: static-flicker 0.5s ease-out;
+.play-btn {
+  background: radial-gradient(circle at 35% 30%, #4a3320, #1c1108 75%);
+  color: var(--color-cream);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 220, 180, 0.2),
+    inset 0 -3px 5px rgba(0, 0, 0, 0.6),
+    0 4px 10px rgba(0, 0, 0, 0.45);
 }
 
 @media (prefers-reduced-motion: reduce) {
