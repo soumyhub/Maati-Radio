@@ -20,7 +20,7 @@ export const tracks: Track[] = [
     category: "Rajasthani Folk",
     year: "2002",
     duration: "7:52",
-    videoId: "_tDOaWIFfYI?si=kgWp9a4EbLToLrKc",
+    videoId: "_tDOaWIFfYI",
   },
   {
     id: "mishri-ko-baag-laga-de-rasiya",
@@ -29,7 +29,7 @@ export const tracks: Track[] = [
     category: "Folk Dance",
     year: "2002",
     duration: "6:51",
-    videoId: "PMWCFuGLHkA?si=KcWW1NTxeuQH58Ds",
+    videoId: "PMWCFuGLHkA",
   },
   {
     id: "jalalo-bilalo",
@@ -38,7 +38,7 @@ export const tracks: Track[] = [
     category: "Rajasthani Folk",
     year: "2023",
     duration: "5:28",
-    videoId: "jRr-RVqP-l0?si=iE6DXpEToZbU9wHr",
+    videoId: "jRr-RVqP-l0",
   },
   {
     id: "sundar-gori",
@@ -47,7 +47,7 @@ export const tracks: Track[] = [
     category: "Festive Folk",
     year: "2025",
     duration: "6:56",
-    videoId: "araonQrXfpg?si=kjebz5Ht7mB03aTZ",
+    videoId: "araonQrXfpg",
   },
   {
     id: "naina-ro-lobhi",
@@ -56,7 +56,7 @@ export const tracks: Track[] = [
     category: "World Record Folk Dance",
     year: "2000",
     duration: "7:28",
-    videoId: "obJpe-T-nA4?si=votRi2SSr3flIi74",
+    videoId: "obJpe-T-nA4",
   },
   {
     id: "boli-pyari-lage",
@@ -65,7 +65,7 @@ export const tracks: Track[] = [
     category: "Rajasthani Folk",
     year: "2025",
     duration: "5:02",
-    videoId: "4TSxPTfsF6U?si=hjn3vQyBay3pqNgk",
+    videoId: "4TSxPTfsF6U",
   },
   {
     id: "mumal",
@@ -74,7 +74,7 @@ export const tracks: Track[] = [
     category: "Desert Ballad",
     year: "Traditional",
     duration: "4:52",
-    videoId: "Ah1gS3ZtNrg?si=1JtOkbsVpOqygAUm",
+    videoId: "Ah1gS3ZtNrg",
   },
   {
     id: "savariya-parnaye",
@@ -83,7 +83,7 @@ export const tracks: Track[] = [
     category: "Folk",
     year: "1996",
     duration: "7:44",
-    videoId: "-OEh1EQ-vuM?si=ibDbpktM-fuxWrtm",
+    videoId: "-OEh1EQ-vuM",
   },
   {
     id: "hiwde-ro-haar",
@@ -92,7 +92,7 @@ export const tracks: Track[] = [
     category: "Traditional Rajasthani Folk",
     year: "2001",
     duration: "4:25",
-    videoId: "zOxgU11gw8g?si=BtarDGDpiN8zlW45",
+    videoId: "zOxgU11gw8g",
   },
   {
     id: "aave-re-hichki",
@@ -101,7 +101,7 @@ export const tracks: Track[] = [
     category: "Rajasthani Original Langa Song",
     year: "2020",
     duration: "9:25",
-    videoId: "IwiG-aSfDLg?si=gsvKh19V3FGXVsaE",
+    videoId: "IwiG-aSfDLg",
   },
 ];
 
