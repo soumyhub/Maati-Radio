@@ -212,6 +212,45 @@ body {
     0 4px 10px rgba(0, 0, 0, 0.45);
 }
 
+/* ---------- Hero brand title — subtle extruded/printed-sign effect ---------- */
+
+.brand-hero {
+  top: 38%;
+}
+
+/* On short viewports (landscape phones, small laptops) nudge the title up
+   so its centered block can't drift down into the bottom player. */
+@media (max-height: 700px) {
+  .brand-hero {
+    top: 33%;
+  }
+}
+
+@media (max-height: 560px) {
+  .brand-hero {
+    top: 30%;
+  }
+}
+
+/* Several small, close, opaque offsets (not a soft glow) read as a
+   physically raised/printed letterform rather than a modern drop shadow. */
+
+.title-extrude {
+  text-shadow:
+    1px 1px 0 rgba(59, 38, 24, 0.9),
+    2px 2px 0 rgba(53, 33, 20, 0.85),
+    3px 3px 0 rgba(44, 26, 15, 0.75),
+    4px 4px 0 rgba(36, 20, 12, 0.65),
+    6px 7px 14px rgba(0, 0, 0, 0.45);
+}
+
+.subtitle-extrude {
+  text-shadow:
+    1px 1px 0 rgba(59, 38, 24, 0.85),
+    2px 2px 0 rgba(44, 26, 15, 0.7),
+    3px 4px 9px rgba(0, 0, 0, 0.35);
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.001ms !important;
