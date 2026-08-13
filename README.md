@@ -1,8 +1,8 @@
 # MĀTI RADIO — Rajasthan
 
-A full-screen illustrated Rajasthan desert-sunset scene with a large Hindi
-brand mark and a wide parchment music player anchored at the bottom. Next.js
-+ TypeScript + Tailwind v4.
+A full-screen looping background video with a large Hindi brand mark, a
+compact parchment music player, and a cinematic scroll transition into an
+About section. Next.js + TypeScript + Tailwind v4.
 
 ## Run it
 
@@ -13,140 +13,116 @@ npm run dev
 
 Open http://localhost:3000.
 
-## ⚠️ Two things are still missing — on purpose
+## ⚠️ Still missing: the background video file
 
-### 1. The real background artwork
+**`public/bg/maati-radio-bg.mp4` does not exist in this project yet.** I
+was never given the file directly — same situation as the earlier
+background images, which were uploaded straight to your GitHub repo rather
+than to me. Per the "don't substitute another background" instruction, I'm
+telling you plainly rather than faking it.
 
-**`public/bg/scene-wide.png` and `public/bg/scene-tall.png` do not exist
-yet.** You haven't supplied them, so per your instructions I'm not silently
-substituting something else — I'm telling you directly.
+Until it exists, `.scene-fallback` (a painted gradient) and the SVG
+placeholder scenery in `components/SceneSilhouette.tsx` show through, and
+the `<video>` element's `poster="/bg/scene-wide.png"` shows your existing
+photo as a static frame. The moment you add the real file to
+`public/bg/maati-radio-bg.mp4`, it plays automatically — nothing else to
+change (see `components/BackgroundVideo.tsx`).
 
-Until they exist, the page shows:
-- a painted CSS gradient (dusk sky, glowing sun, dark foreground) approximating
-  the reference's palette, and
-- a small SVG placeholder scene (dunes, a distant fort silhouette, a camel
-  caravan and herder) so you can already judge the composition and layout.
+## What changed in this pass
 
-Both live in `app/globals.css` (`.scene-fallback`) and
-`components/SceneSilhouette.tsx`. The moment you drop real files into
-`public/bg/`, `.scene-bg` (which sits in front of the fallback) will cover
-them completely — nothing else needs to change.
+### 1. Background image → looping video
+- `components/BackgroundVideo.tsx` — a real `<video>` element:
+  `autoPlay muted loop playsInline`, `poster="/bg/scene-wide.png"`,
+  `<source src="/bg/maati-radio-bg.mp4" type="video/mp4" />`.
+- `.scene-video` in `globals.css` handles the full-bleed fill:
+  `position:absolute; inset:0; object-fit:cover;`.
+- The old two-image (`scene-wide.png` / `scene-tall.png` via orientation
+  media query) approach is retired — a single video with `object-fit:
+  cover` handles both orientations. `scene-wide.png` is kept on as the
+  video's `poster`.
+- The painted-gradient fallback and SVG placeholder scenery are unchanged
+  and still sit behind everything, for the same reason as before (nothing
+  to show until the real asset exists).
 
-### 2. Real YouTube video IDs
+### 2. Cinematic Hero → About scroll transition
+- The Hero (background video + top bar + brand title + player) is now
+  `position: fixed` (`.hero-fixed` in `globals.css`, wrapping
+  `<RadioExperience />` in `app/page.tsx`) — it never scrolls itself and
+  stays visually immersive the whole time, including once About has
+  risen over it (About is semi-translucent + blurred, not opaque).
+- `components/ScrollReveal.tsx` measures how far the About panel has
+  scrolled into view (via `getBoundingClientRect`, throttled with
+  `requestAnimationFrame`) and writes a single `0–1` value to a CSS custom
+  property, `--reveal`, on `<html>`. No animation library, no extra
+  dependency, no per-frame React re-render.
+- `components/BrandMark.tsx` — the title/subtitle/frequency block is now
+  wrapped in an inner `.hero-title-reveal` div (deliberately a *separate*
+  element from the existing centering wrapper, so its scroll-driven
+  `transform`/`opacity` can't collide with the pre-existing
+  `left-1/2 -translate-x-1/2 -translate-y-1/2` centering transform). As
+  `--reveal` goes 0→1, it moves up, shrinks slightly, and fades.
+- `components/AboutSection.tsx` (new) — the panel that rises up: a
+  translucent, blurred dark backdrop (`.about-panel`) over a short "what
+  is Māti Radio" blurb, using the same fonts/palette as the rest of the
+  site. It has its own scroll-driven `transform`/`opacity` (a gentle
+  "lag" on top of its natural document-flow scroll position, for the
+  eased/cinematic feel) via the same `--reveal` variable.
+- `app/page.tsx` — now: fixed Hero → `.about-spacer` (100dvh, reserves
+  the initial full-viewport hold before anything moves) → `<ScrollReveal>`
+  wrapping `<AboutSection />`.
+- All easing is plain CSS `transition: transform … cubic-bezier(...)`
+  smoothing the JS-driven variable updates — works with mouse wheel,
+  trackpad, and touch scroll identically, and respects
+  `prefers-reduced-motion` (existing global rule).
 
-`lib/tracks.ts` has the 10-track "initial example structure" from your
-brief (Kesariya Balam, Ghoomar, Padharo Mhare Des, Nimbooda, Banna Re Bagan
-Mein, Gorband Nakhralo, Moomal, Kurjan, Chirmi, Hichki). Every `videoId` is
-a placeholder (`REPLACE_WITH_VIDEO_ID_1` … `_10`) — none were searched for
-or sourced, per your instructions.
+### 3. Smaller, higher, centered player
+- `components/RadioExperience.tsx` — the player's wrapper changed from a
+  bottom-flow flex item to `.player-position`: `position: absolute; left:
+  50%; bottom: 20%; transform: translateX(-50%);`, with `max-height`
+  media queries (`bottom: 15%` / `12%`) so it can't drift toward the
+  bottom edge on short viewports. (The now-unused flex spacer that used
+  to push it down was removed, since both BrandMark and the player are
+  absolutely positioned now.)
+- `components/PlayerBar.tsx` — width cap `1300px → 900px`, padding,
+  artwork thumbnail, play button, and volume slider all reduced slightly.
+  **Previous/Next buttons were deliberately left at their existing 44px
+  minimum touch target** rather than shrunk further, per the site's
+  existing accessibility baseline. No logic, structure, or JSX beyond
+  class names changed — playback, seeking, error handling, etc. are
+  identical to before.
 
-Right now, pressing Play on any track shows a small inline note in the
-player ("No playable video ID yet…") instead of pretending to play — see
-"How playback is tested/fixed" below for why.
+## Verification performed
 
-To add a real song, edit one line in `lib/tracks.ts`:
+Same two static checks as previous passes (this sandbox has no network
+access, so `npm run build` itself can't run here):
+- A custom cross-file import/export check across every `.ts`/`.tsx` file —
+  clean.
+- A full TypeScript transpile (syntax-level) pass over every file — clean.
 
-```ts
-{
-  id: "kesariya-balam",
-  title: "Kesariya Balam",
-  artist: "Traditional Rajasthani Folk",
-  category: "Rajasthani Folk",
-  year: "Traditional",
-  duration: "—",
-  videoId: "REPLACE_WITH_VIDEO_ID_1", // ← paste the real 11-character ID here
-},
-```
+Also directly confirmed:
+- `lib/tracks.ts` and `lib/useYouTubePlayer.ts` are byte-for-byte
+  unchanged (line counts / diffs checked).
+- `components/TopBar.tsx`, `SongsDrawer.tsx`, and `Clock.tsx` are
+  unchanged (checksummed).
 
-The ID is the part after `?v=` in a YouTube URL. Use a source you have the
-right to embed — ideally the rights holder's own upload with embedding
-enabled. Adding a brand-new song anywhere in the ~20-track list this is
-built for is the same one-line shape.
-
-## How playback is tested/fixed
-
-I don't have a browser in this environment, so I can't click through a live
-page — what I *did* do is trace every path through the playback code by
-hand against the YouTube IFrame API's documented behaviour, and fix what I
-found:
-
-- **Autoplay-safe by construction.** The player is created with
-  `autoplay: 0`. It only calls `playVideo()` from inside a `<button
-  onClick>` handler — a genuine user gesture — never on mount or on track
-  change. `pause()`/`play()`/`next`/`prev` all go through the same handlers.
-- **UI state only ever reflects YouTube's real state.** `isPlaying` /
-  `isBuffering` are derived from `onStateChange`'s reported `PlayerState`,
-  never set optimistically. The progress bar polls `getCurrentTime()` /
-  `getDuration()` on a 250ms interval **only while `status === "playing"`**
-  — it cannot move from a paused or unstarted player.
-  (`lib/useYouTubePlayer.ts`)
-- **Race condition on first click, fixed.** If someone presses Play before
-  the IFrame API script has finished loading, `play()` used to silently
-  no-op. Now a `pendingPlayRef` flag is set and consumed inside `onReady`,
-  so the very first click still results in playback once the player is
-  ready.
-- **Seeking uses pointer events, not click.** The progress bar uses
-  `onPointerDown` / `onPointerMove` with `setPointerCapture`, so dragging
-  works with mouse, touch, and pen — not just discrete clicks.
-- **Errors skip forward instead of hanging.** `onError` logs the code and
-  video ID, then calls the same `advanceTrack()` used by `ENDED`.
-- **Infinite-error-loop guard, added during this pass.** With every
-  `videoId` currently a placeholder, the *first* version of this fix would
-  have errored, skipped, errored again, skipped again — forever, in a tight
-  loop, the moment you pressed Play. I added an error-streak counter: after
-  the player has failed on every track back-to-back, it stops auto-
-  advancing and shows the inline "no playable video ID yet" message
-  instead. It resets automatically the instant a track actually reaches a
-  real `PLAYING` state. There's also a client-side short-circuit —
-  `videoId.startsWith("REPLACE_WITH_VIDEO_ID")` — so pressing Play on an
-  obvious placeholder shows the message immediately without even calling
-  the YouTube API.
-
-**What I can't verify without a browser:** actual network/embedding
-behaviour once you paste in real video IDs (e.g. a specific video having
-embedding disabled, regional blocks, etc.). Once you add real IDs, run
-`npm run dev` and open the browser console — any embedding/rights errors
-will log there with the YouTube error code and the offending video ID
-before the player skips to the next track.
-
-## Where things live
+## Where things live (updated)
 
 ```
 app/
-  layout.tsx          fonts (Fraunces, Yatra One for Devanagari, IBM Plex Mono), metadata, viewport
-  page.tsx             layers the scene (fallback → SVG scenery → real bg → overlay → grain) + RadioExperience
-  globals.css          Tailwind v4 @theme tokens + scene/parchment-player CSS
+  page.tsx              fixed Hero + about-spacer + ScrollReveal(AboutSection)
+  layout.tsx             fonts, metadata, viewport (unchanged)
+  globals.css             @theme tokens + hero-fixed/scene-video/about-panel/
+                           hero-title-reveal/player-position CSS (this pass)
+                           + all prior styling, unchanged
 components/
-  RadioExperience.tsx   client component owning shared state (active track, songs drawer open/closed)
-  TopBar.tsx             minimal header: clock, online count, Spotify/YT Music/Playlists (inert) + Songs (functional)
-  BrandMark.tsx           large माटी रेडियो / राजस्थानी लोक संगीत — the primary visual identity
-  SceneSilhouette.tsx     SVG placeholder dunes/fort/camel caravan (remove once real art is in place)
-  SongsDrawer.tsx          dropdown song list, opened from "Songs" in the top bar
-  PlayerBar.tsx            the bottom parchment player — artwork/YouTube stage, now playing, progress, controls, volume
-  Clock.tsx                live IST clock, ticking, blinking colon
-  GrainOverlay.tsx         fixed SVG paper-grain texture (subtle, mix-blend overlay)
+  BackgroundVideo.tsx      NEW — the looping <video> background
+  ScrollReveal.tsx         NEW — drives --reveal from scroll position
+  AboutSection.tsx         NEW — the panel that rises over the Hero
+  RadioExperience.tsx      player wrapper repositioned (this pass)
+  BrandMark.tsx            title wrapped in .hero-title-reveal (this pass)
+  PlayerBar.tsx            sizing-only class changes (this pass)
+  TopBar.tsx / SongsDrawer.tsx / Clock.tsx / SceneSilhouette.tsx /
+  GrainOverlay.tsx          unchanged
 lib/
-  types.ts                  Track type
-  tracks.ts                  the flat playlist (~10 of ~20 planned tracks)
-  useYouTubePlayer.ts         hook wrapping the YouTube IFrame Player API (state, progress, seek)
+  tracks.ts, types.ts, useYouTubePlayer.ts   unchanged
 ```
-
-## Removed in this redesign
-
-The previous tabletop-radio centerpiece (`Radio.tsx`, `RadioDisplay.tsx`,
-`FrequencyDial.tsx`, `StationSelector.tsx`, `RadioControls.tsx`,
-`NowPlaying.tsx`, `CulturalInfo.tsx`, `OnAirIndicator.tsx`) and the 5-station
-data model (`lib/stations.ts`) have been deleted entirely, per your brief —
-the background illustration is now the hero, and the radio/station identity
-is expressed through the page's aesthetic and the player, not a physical
-object.
-
-## Notes on the build
-
-- Tailwind v4, config lives entirely in `app/globals.css` via `@theme` —
-  there's no `tailwind.config.*` file.
-- All components are declared at module scope.
-- `prefers-reduced-motion` is respected globally.
-- Touch targets are ≥44px; the song list and player controls are keyboard
-  and screen-reader accessible (`role="slider"` with `aria-value*` on the
-  progress bar, `aria-pressed`/`aria-current` on toggles).

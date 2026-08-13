@@ -69,41 +69,47 @@ body {
   color: var(--color-cream);
 }
 
+/* Single source of truth for the Hero → About scroll transition,
+   updated from ScrollReveal.tsx. Defaulting to 0 means Hero is fully
+   shown and About is fully deferred before any JS runs. */
+:root {
+  --reveal: 0;
+}
+
 body {
   font-family: var(--font-display);
 }
 
 /* ---------- Background environment (the hero) ---------- */
-/* All layers below are position:absolute inside <main>, which is
-   position:relative and sized to the full viewport (min-h-dvh). Using
-   absolute + non-negative z-index (instead of position:fixed with a
-   negative z-index) avoids the classic stacking-context pitfall where any
-   ancestor gaining a transform/filter/contain (or a stray leftover class
-   from an older version of this file) silently breaks a fixed+negative-z
-   background trick. Paint order, back to front: fallback (0) →
-   placeholder scenery (1) → real photo (2) → readability overlay (3) →
-   paper grain (4) → UI content (z-10 and up, set on RadioExperience). */
+/* All layers below are position:absolute inside .hero-fixed (which is
+   position:fixed, itself the positioning context for these children).
+   Non-negative z-index avoids the classic stacking-context pitfall where
+   any ancestor gaining a transform/filter/contain silently breaks a
+   negative-z background trick. Paint order, back to front: fallback (0) →
+   placeholder scenery (1) → background video (2) → readability overlay
+   (3) → paper grain (4) → UI content (z-10 and up, set on
+   RadioExperience). */
 
-.scene-bg {
+.hero-fixed {
+  position: fixed;
+  inset: 0;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.scene-video {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background-image: url("/bg/scene-wide.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
-/* Portrait / mobile: swap to the separately-composed tall artwork. */
-@media (orientation: portrait) {
-  .scene-bg {
-    background-image: url("/bg/scene-tall.png");
-  }
-}
-
-/* Painted-gradient stand-in, shown only where the real artwork above is
-   transparent — i.e. before public/bg/scene-wide.png / scene-tall.png
-   existed. Once those files 404 no longer, this is simply covered. */
+/* Painted-gradient stand-in, shown only where the video above is
+   transparent — i.e. before /bg/maati-radio-bg.mp4 existed, while it's
+   still loading, or if it fails to play. */
 .scene-fallback {
   position: absolute;
   inset: 0;
@@ -249,6 +255,64 @@ body {
     1px 1px 0 rgba(59, 38, 24, 0.85),
     2px 2px 0 rgba(44, 26, 15, 0.7),
     3px 4px 9px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- Cinematic Hero → About scroll transition ---------- */
+
+/* Reserves the initial full-viewport scroll room so the Hero is fully
+   visible before the transition begins (the fixed Hero itself takes up
+   zero document flow height, since position:fixed elements don't). */
+.about-spacer {
+  height: 100dvh;
+}
+
+.about-panel {
+  position: relative;
+  z-index: 30;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(18, 11, 7, 0.55) 0%, rgba(18, 11, 7, 0.88) 100%);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  transform: translateY(calc((1 - var(--reveal, 0)) * 10dvh));
+  opacity: calc(0.25 + var(--reveal, 0) * 0.75);
+  transition: transform 160ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms ease-out;
+  will-change: transform, opacity;
+}
+
+/* Wraps BrandMark's title/subtitle/frequency block (not the outer
+   centering div, so this transform can't collide with the existing
+   left-50%/-translate-x-1/2/-translate-y-1/2 centering transform). */
+.hero-title-reveal {
+  transform: translateY(calc(var(--reveal, 0) * -70px)) scale(calc(1 - var(--reveal, 0) * 0.18));
+  opacity: calc(1 - var(--reveal, 0) * 0.92);
+  transition: transform 120ms cubic-bezier(0.22, 1, 0.36, 1), opacity 150ms ease-out;
+  will-change: transform, opacity;
+}
+
+/* ---------- Player position (Hero, lower-middle, not flush to the edge) ---------- */
+
+.player-position {
+  position: absolute;
+  left: 50%;
+  bottom: 20%;
+  z-index: 10;
+  width: min(92vw, 900px);
+  transform: translateX(-50%);
+}
+
+@media (max-height: 700px) {
+  .player-position {
+    bottom: 15%;
+  }
+}
+
+@media (max-height: 560px) {
+  .player-position {
+    bottom: 12%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

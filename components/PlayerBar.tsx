@@ -147,21 +147,21 @@ export default function PlayerBar({ trackIndex, onTrackIndexChange }: PlayerBarP
   }
 
   return (
-    <div className="player-parchment relative z-20 mx-auto w-full max-w-[1300px] rounded-2xl p-3 sm:p-4">
-      <div className="flex items-center gap-3 sm:gap-4">
+    <div className="player-parchment relative z-20 mx-auto w-full max-w-[900px] rounded-2xl p-2.5 sm:p-3">
+      <div className="flex items-center gap-2.5 sm:gap-3">
         {/* Artwork / visible YouTube stage — no thumbnails downloaded or re-hosted */}
-        <div className="relative aspect-square w-16 shrink-0 overflow-hidden rounded-lg border border-[#3b2618]/30 bg-[#20140c] shadow-inner sm:w-20">
+        <div className="relative aspect-square w-14 shrink-0 overflow-hidden rounded-lg border border-[#3b2618]/30 bg-[#20140c] shadow-inner sm:w-16">
           <div id={YOUTUBE_ELEMENT_ID} className="h-full w-full" />
         </div>
 
         <div className="min-w-0 flex-1">
-          <p className="font-[family-name:var(--font-ui)] text-[0.6rem] tracking-[0.3em] text-[#5a3d24]/70">
+          <p className="font-[family-name:var(--font-ui)] text-[0.55rem] tracking-[0.3em] text-[#5a3d24]/70">
             NOW PLAYING
           </p>
-          <p className="truncate font-[family-name:var(--font-display)] text-base font-semibold text-[#241812] sm:text-lg">
+          <p className="truncate font-[family-name:var(--font-display)] text-sm font-semibold text-[#241812] sm:text-base">
             {track.title}
           </p>
-          <p className="truncate font-[family-name:var(--font-ui)] text-xs text-[#5a3d24]/80">
+          <p className="truncate font-[family-name:var(--font-ui)] text-[0.7rem] text-[#5a3d24]/80">
             {track.artist} · {track.category}
           </p>
 
@@ -198,7 +198,7 @@ export default function PlayerBar({ trackIndex, onTrackIndexChange }: PlayerBarP
             onClick={togglePlay}
             aria-label={isPlaying ? "Pause" : "Play"}
             aria-pressed={isPlaying}
-            className="play-btn flex h-12 w-12 items-center justify-center rounded-full sm:h-14 sm:w-14"
+            className="play-btn flex h-11 w-11 items-center justify-center rounded-full sm:h-12 sm:w-12"
           >
             {isBuffering ? (
               <span className="h-3 w-3 animate-pulse rounded-full bg-current" aria-hidden="true" />
@@ -236,7 +236,7 @@ export default function PlayerBar({ trackIndex, onTrackIndexChange }: PlayerBarP
               value={volume}
               onChange={(e) => handleVolumeChange(Number(e.target.value))}
               aria-label="Volume"
-              className="h-11 w-20 accent-[#B5522E]"
+              className="h-11 w-16 accent-[#B5522E]"
             />
           </div>
         </div>

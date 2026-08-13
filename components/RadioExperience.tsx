@@ -22,14 +22,9 @@ export default function RadioExperience() {
         />
       </div>
 
-      {/* Spacer preserves the top-bar/player flex distribution; BrandMark
-          is positioned absolutely (see below) so it can sit at an exact
-          viewport-relative height regardless of top bar / player size. */}
-      <div className="flex-1" aria-hidden="true" />
-
       <BrandMark />
 
-      <div className="relative z-10 px-[max(1rem,env(safe-area-inset-left))] pb-[max(1rem,env(safe-area-inset-bottom))] pr-[max(1rem,env(safe-area-inset-right))] sm:pb-8">
+      <div className="player-position">
         <PlayerBar trackIndex={trackIndex} onTrackIndexChange={setTrackIndex} />
       </div>
     </>
