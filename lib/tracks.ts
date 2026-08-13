@@ -20,7 +20,7 @@ export const tracks: Track[] = [
     category: "Rajasthani Folk",
     year: "Traditional",
     duration: "—",
-    videoId: "REPLACE_WITH_VIDEO_ID_1",
+    videoId: "PlEchkA66Jk",
   },
   {
     id: "ghoomar",
