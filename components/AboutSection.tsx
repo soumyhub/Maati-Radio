@@ -31,7 +31,7 @@ export default function AboutSection() {
           94.7 FM · RAJASTHAN
         </p>
         
-        <p className="mt-15 font-[family-name:var(--font-ui)] text-[0.55rem] tracking-[0.30em] text-cream/20">
+        <p className="mt-10 font-[family-name:var(--font-ui)] text-base leading-relaxed text-cream/40 sm:text-lg">
           by Soumy Paliwal
           contact - workspaliwal@gmail.com
           </p>
