@@ -33,6 +33,7 @@ export default function AboutSection() {
         
         <p className="mt-12 font-[family-name:var(--font-ui)] text-[0.75rem] tracking-[0.45em] text-cream/45">
           by Soumy Paliwal - workspaliwal@gmail.com
+          </p>
       </div>
     </section>
   );
