@@ -6,7 +6,7 @@ export default function BrandMark() {
     >
       <div className="hero-title-reveal">
         <h1
-          className="title-extrude font-[family-name:var(--font-devanagari)] text-[3.7rem] sm:text-[5.1rem] md:text-[6.7rem] lg:text-[9.5rem] xl:text-[10.5rem]"
+          className="title-extrude font-[family-name:var(--font-devanagari)] text-[3.25rem] font-extrabold leading-[0.88] tracking-tight text-cream sm:text-[4.5rem] md:text-[6rem] lg:text-[8.5rem] xl:text-[9.5rem]"
           lang="hi"
         >
           माटी
