@@ -9,9 +9,7 @@ export default function BrandMark() {
           className="title-extrude font-[family-name:var(--font-devanagari)] text-[3.25rem] font-extrabold leading-[0.88] tracking-tight text-cream sm:text-[4.5rem] md:text-[6rem] lg:text-[8.5rem] xl:text-[9.5rem]"
           lang="hi"
         >
-          माटी
-          <br />
-          रेडियो
+          रेत राग
         </h1>
 
         <p
