@@ -45,7 +45,7 @@ export default function RadioExperience() {
 
       <BrandMark />
 
-      {/* Player + music actions + track meaning */}
+      {/* Player + music actions */}
       <div className="player-position flex flex-col items-center">
         <PlayerBar
           trackIndex={trackIndex}
@@ -96,7 +96,7 @@ export default function RadioExperience() {
           </a>
         </div>
 
-        {/* Meaning/story of the currently playing track */}
+        {/* Track meaning — positioned independently so it does NOT move the player */}
         <TrackMeaning track={currentTrack} />
       </div>
     </>
