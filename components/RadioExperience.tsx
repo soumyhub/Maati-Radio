@@ -5,6 +5,7 @@ import TopBar from "./TopBar";
 import BrandMark from "./BrandMark";
 import PlayerBar from "./PlayerBar";
 import SongsDrawer from "./SongsDrawer";
+import TrackMeaning from "./TrackMeaning";
 import { tracks } from "../lib/tracks";
 
 export default function RadioExperience() {
@@ -44,7 +45,7 @@ export default function RadioExperience() {
 
       <BrandMark />
 
-      {/* Player + music actions */}
+      {/* Player + music actions + track meaning */}
       <div className="player-position flex flex-col items-center">
         <PlayerBar
           trackIndex={trackIndex}
@@ -94,6 +95,9 @@ export default function RadioExperience() {
             <span>YT Music</span>
           </a>
         </div>
+
+        {/* Meaning/story of the currently playing track */}
+        <TrackMeaning track={currentTrack} />
       </div>
     </>
   );
