@@ -45,7 +45,7 @@ export default function RadioExperience() {
 
       <BrandMark />
 
-      {/* Player + music actions */}
+      {/* Player + music actions + track meaning */}
       <div className="player-position flex flex-col items-center">
         <PlayerBar
           trackIndex={trackIndex}
@@ -95,10 +95,10 @@ export default function RadioExperience() {
             <span>YT Music</span>
           </a>
         </div>
-      </div>
 
-      {/* Track meaning — completely independent from player positioning */}
-      <TrackMeaning track={currentTrack} />
+        {/* Track meaning — below the buttons with a small gap */}
+        <TrackMeaning track={currentTrack} />
+      </div>
     </>
   );
 }
