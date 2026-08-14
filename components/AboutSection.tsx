@@ -14,17 +14,18 @@ export default function AboutSection() {
         </h2>
 
         <p className="mt-6 font-[family-name:var(--font-display)] text-base leading-relaxed text-cream/80 sm:text-lg">
-          Māti Radio is an imagined old transistor set, still broadcasting from
-          somewhere between a Rajasthani desert town and an old haveli
-          courtyard. Every station on the dial carries a different mood of
-          Rajasthan — the warmth of Padharo Mhare Des, the raw desert folk of
-          the Thar, the communal lift of a village Lok Geet, the unhurried
-          elegance of Maand, and the quiet of a Raat Ri Dhun.
+          Maati Radio is an imagined old transistor, broadcasting from somewhere between the Thar and an old haveli courtyard.
+          A place where folk songs travel slowly through desert winds, village evenings, wedding courtyards, distant train rides,
+          and memories passed from one generation to another.
+
+          Turn the dial and find a different Rajasthan each time: Padharo Mhare Des, the raw voice of the Thar, the warmth
+          of a Lok Geet, the quiet elegance of Maand, or the stillness of a Raat Ri Dhun.
         </p>
 
         <p className="mt-4 font-[family-name:var(--font-display)] text-base leading-relaxed text-cream/70 sm:text-lg">
-          There are no playlists here — only a dial, a speaker, and the sound
-          of a place that has been singing for a very long time.
+          No playlists. No algorithms. Just a dial, a speaker, and the sound of a land that has been singing for a very long time.
+
+          Maati Radio — a little piece of Rajasthan, playing somewhere in the air.
         </p>
 
         <p className="mt-8 font-[family-name:var(--font-ui)] text-[0.65rem] tracking-[0.35em] text-cream/45">
