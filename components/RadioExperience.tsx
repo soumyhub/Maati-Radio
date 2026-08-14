@@ -45,15 +45,15 @@ export default function RadioExperience() {
 
       <BrandMark />
 
-      {/* Player + music actions + track meaning */}
+      {/* Player + music actions */}
       <div className="player-position flex flex-col items-center">
         <PlayerBar
           trackIndex={trackIndex}
           onTrackIndexChange={setTrackIndex}
         />
 
-        {/* Current song actions */}
-        <div className="mt-3 flex items-center justify-center gap-2">
+        {/* Music action row + meaning anchor */}
+        <div className="relative mt-3 flex items-center justify-center gap-2">
           {/* Spotify */}
           <button
             type="button"
@@ -94,10 +94,10 @@ export default function RadioExperience() {
 
             <span>YT Music</span>
           </a>
-        </div>
 
-        {/* Track meaning — below the buttons with a small gap */}
-        <TrackMeaning track={currentTrack} />
+          {/* Track meaning is anchored directly below the button row */}
+          <TrackMeaning track={currentTrack} />
+        </div>
       </div>
     </>
   );
