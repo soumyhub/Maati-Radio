@@ -95,10 +95,10 @@ export default function RadioExperience() {
             <span>YT Music</span>
           </a>
         </div>
-
-        {/* Track meaning — positioned independently so it does NOT move the player */}
-        <TrackMeaning track={currentTrack} />
       </div>
+
+      {/* Track meaning — completely independent from player positioning */}
+      <TrackMeaning track={currentTrack} />
     </>
   );
 }
