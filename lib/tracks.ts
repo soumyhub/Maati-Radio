@@ -10,6 +10,8 @@ export const tracks: Track[] = [
     duration: "7:52",
     videoId: "_tDOaWIFfYI",
     spotifyUrl: "https://open.spotify.com/track/2HeOEpNnWIsikoFPtkY9po",
+    description:
+      "A heartfelt invitation to a beloved to return home, carrying the warmth of welcome across the desert. The song turns longing into hospitality, making home feel like a place waiting with open doors.",
   },
   {
     id: "mishri-ko-baag-laga-de-rasiya",
@@ -20,6 +22,8 @@ export const tracks: Track[] = [
     duration: "6:51",
     videoId: "PMWCFuGLHkA",
     spotifyUrl: "https://open.spotify.com/track/5hoSlKgzmo2L7oeMZXxedm",
+    description:
+      "A playful folk expression built around sweetness, affection, and the teasing language of love. Its lively spirit captures the colourful, flirtatious side of Rajasthan's village folk tradition.",
   },
   {
     id: "jalalo-bilalo",
@@ -30,6 +34,8 @@ export const tracks: Track[] = [
     duration: "5:28",
     videoId: "jRr-RVqP-l0",
     spotifyUrl: "https://open.spotify.com/track/4ihRIDhpvXI8J5f9Csc6A6",
+    description:
+      "A woman's voice of yearning, where love becomes restless and separation stretches across the horizon. The song carries the ache of waiting for someone whose absence fills every quiet moment.",
   },
   {
     id: "sundar-gori",
@@ -40,6 +46,8 @@ export const tracks: Track[] = [
     duration: "6:56",
     videoId: "araonQrXfpg",
     spotifyUrl: "https://open.spotify.com/track/1JjwBwLOd02jRIoa4wrsYs",
+    description:
+      "A celebration of beauty, charm, and the playful energy that lives inside Rajasthani folk music. Its festive character feels like colour, movement, and laughter spilling into a village gathering.",
   },
   {
     id: "naina-ro-lobhi",
@@ -50,6 +58,8 @@ export const tracks: Track[] = [
     duration: "7:28",
     videoId: "obJpe-T-nA4",
     spotifyUrl: "https://open.spotify.com/track/2dVUPUGaJpoMOUKIHzWfC3",
+    description:
+      "A song where the eyes become the language of attraction, expressing feelings that words cannot quite hold. Its rhythm turns romantic longing into something playful, graceful, and meant to be danced.",
   },
   {
     id: "boli-pyari-lage",
@@ -60,6 +70,8 @@ export const tracks: Track[] = [
     duration: "5:02",
     videoId: "4TSxPTfsF6U",
     spotifyUrl: "https://open.spotify.com/track/0Q4g4OIYjbmhSGe1UayiHY",
+    description:
+      "A tender celebration of a beloved whose words and presence feel sweeter than anything around them. The song carries the warmth of admiration through the earthy voice of Rajasthani folk.",
   },
   {
     id: "moomal",
@@ -70,6 +82,8 @@ export const tracks: Track[] = [
     duration: "4:52",
     videoId: "Ah1gS3ZtNrg",
     spotifyUrl: "https://open.spotify.com/track/34LzbD5SLqVtnXyvooIruY",
+    description:
+      "Inspired by the legendary tale of Moomal, a story of love, illusion, longing, and separation from Rajasthan's folklore. Its haunting mood leaves behind the feeling of a love that survived even when the lovers could not.",
   },
   {
     id: "savariya-parnaye",
@@ -80,6 +94,8 @@ export const tracks: Track[] = [
     duration: "7:44",
     videoId: "-OEh1EQ-vuM",
     spotifyUrl: "https://open.spotify.com/track/2Lbc28ETd6b7iGnBetgfCc",
+    description:
+      "A folk expression of devotion and affection towards the beloved, carried by the intimate language of Rajasthan's traditional songs. It feels like a private conversation turned into melody.",
   },
   {
     id: "hiwde-ro-haar",
@@ -90,6 +106,8 @@ export const tracks: Track[] = [
     duration: "4:25",
     videoId: "zOxgU11gw8g",
     spotifyUrl: "https://open.spotify.com/track/6duOTA2tv96iyo46JCZg5h",
+    description:
+      "A song of the heart, where love and emotion are worn almost like a garland around the soul. Its traditional sound carries the intimacy of feelings shared without needing elaborate words.",
   },
   {
     id: "aave-re-hichki",
@@ -100,6 +118,8 @@ export const tracks: Track[] = [
     duration: "9:25",
     videoId: "IwiG-aSfDLg",
     spotifyUrl: "https://open.spotify.com/track/0bivfthRrQRvmGufTF7kxn",
+    description:
+      "The familiar idea of a sudden hiccup becomes a playful sign that someone far away is remembering you. Beneath its folk charm is the sweetness of love, distance, and being remembered.",
   },
   {
     id: "chaudhary",
@@ -110,6 +130,8 @@ export const tracks: Track[] = [
     duration: "7:00",
     videoId: "1gukvtH_a3I",
     spotifyUrl: "https://open.spotify.com/track/6U28uT3sr2xZlTniZEWiHI",
+    description:
+      "A vibrant meeting of contemporary sound and Rajasthan's folk voice, celebrating rural charm, confidence, and romance. Mame Khan's earthy delivery gives the song the unmistakable colour of the desert.",
   },
   {
     id: "jala-sain",
@@ -120,6 +142,8 @@ export const tracks: Track[] = [
     duration: "7:10",
     videoId: "Azfrg__lLZQ",
     spotifyUrl: "https://open.spotify.com/track/3inHisUv4GAB0z0KsQ0Cxh",
+    description:
+      "A wedding folk song filled with the warmth, teasing, and celebration that surround a Rajasthani marriage. It belongs to that joyful space where an entire family becomes part of the story.",
   },
   {
     id: "ghoomar",
@@ -130,6 +154,8 @@ export const tracks: Track[] = [
     duration: "6:43",
     videoId: "nHhRWgkkpMk",
     spotifyUrl: "https://open.spotify.com/track/43CTiv7yzWjHEXf9nj1tyb",
+    description:
+      "Ghoomar turns celebration into movement, with women dancing in circles as colour and fabric sweep through the air. The song carries the grace, pride, and communal joy at the heart of Rajasthan's folk tradition.",
   },
   {
     id: "railgaadi",
@@ -140,6 +166,8 @@ export const tracks: Track[] = [
     duration: "3:39",
     videoId: "YQGDuo6Uufg",
     spotifyUrl: "https://open.spotify.com/track/0usYBbHAMyaUXQWt6MPgRb",
+    description:
+      "A journey set to rhythm, using the image of a train to carry folk music beyond the villages and across changing landscapes. It feels like Rajasthan in motion—restless, rhythmic, and full of stories.",
   },
   {
     id: "kurjan",
@@ -150,6 +178,8 @@ export const tracks: Track[] = [
     duration: "9:26",
     videoId: "GMwzFdg1UrU",
     spotifyUrl: "https://open.spotify.com/track/1foU2FA5rID7yf3iU7b31Z",
+    description:
+      "Like the migratory kurjan bird crossing long distances, the song carries the feeling of separation and a message sent towards someone far away. Its slow melody feels like longing travelling across an endless sky.",
   },
   {
     id: "manado-le-gayo",
@@ -160,16 +190,8 @@ export const tracks: Track[] = [
     duration: "5:09",
     videoId: "plNUQU-GV5s",
     spotifyUrl: "https://open.spotify.com/track/3Qq4Yw1ipf8OGSl4tTVAzG",
-  },
-  {
-    id: "lagayi-dyo-hariya-baag",
-    title: "Lagayi Dyo Hariya Baag",
-    artist: "by Jalal Khan",
-    category: "Folk Music",
-    year: "2021",
-    duration: "4:41",
-    videoId: "gEOQK7bwrtM",
-    spotifyUrl: "https://open.spotify.com/track/0btGa7wqmNuXVUnaRZsZx8",
+    description:
+      "A folk tale carried through an earthy desert sound, where emotion is expressed through repetition, voice, and rhythm. It feels rooted in the old oral tradition of stories travelling from one gathering to another.",
   },
   {
     id: "gori-jovey-baat",
@@ -180,6 +202,8 @@ export const tracks: Track[] = [
     duration: "5:50",
     videoId: "p4wzTHo8gbw",
     spotifyUrl: "https://open.spotify.com/track/3zdrn5wFSsMlqlyq9nTLz1",
+    description:
+      "A tender folk conversation shaped around affection, beauty, and the quiet pull between two people. Champe Khan's voice gives the song the intimate, weathered character of desert storytelling.",
   },
   {
     id: "samdariyo",
@@ -190,6 +214,8 @@ export const tracks: Track[] = [
     duration: "4:32",
     videoId: "2xsf6_3QqQM",
     spotifyUrl: "https://open.spotify.com/track/7oajIHHEoJUKMZ1gW29QJH",
+    description:
+      "A traditional desert sound shaped by the vastness of Rajasthan and the voices that have travelled through it for generations. Its simplicity feels like an evening gathering somewhere beyond the last village light.",
   },
   {
     id: "jaipur-su-lajo-tara-ri-chunari",
@@ -200,6 +226,8 @@ export const tracks: Track[] = [
     duration: "8:06",
     videoId: "XJeHKEaGVQY",
     spotifyUrl: "https://open.spotify.com/track/71RDPSkjXYSz3zHmzkFTIB",
+    description:
+      "A colourful romantic folk song where the chunari becomes a symbol of beauty, affection, and celebration. Its imagery brings together Rajasthan's cities, colours, dance, and the playful language of love.",
   },
   {
     id: "mitho-laage",
@@ -210,6 +238,8 @@ export const tracks: Track[] = [
     duration: "4:35",
     videoId: "wy2eULa2fx0",
     spotifyUrl: "https://open.spotify.com/track/4mjjr1EeynuE236oOWeEMK",
+    description:
+      "A warm, contemporary folk piece built around the sweetness of affection and the pleasure of being close to someone dear. Mame Khan's voice keeps that sweetness grounded in the unmistakable soul of Rajasthan.",
   },
   {
     id: "chirmi",
@@ -220,6 +250,8 @@ export const tracks: Track[] = [
     duration: "6:21",
     videoId: "665oYRPh8Os",
     spotifyUrl: "https://open.spotify.com/track/5VmRESES2OFeZvWkDHAuIx",
+    description:
+      "Built around the chirmi flower and the emotions of a young woman, this folk song blends innocence, beauty, and playful longing. It carries the intimate feeling of village life where nature and love often speak the same language.",
   },
   {
     id: "halleriya",
@@ -230,6 +262,8 @@ export const tracks: Track[] = [
     duration: "6:44",
     videoId: "2REzWgghg5c",
     spotifyUrl: "https://open.spotify.com/track/1GVeYGGaOVR9iW1dWtQjXz",
+    description:
+      "A spirited folk performance shaped by the energy of Rajasthan's travelling musicians and communal gatherings. Its rhythm feels made for voices joining together rather than one person singing alone.",
   },
   {
     id: "banro",
@@ -240,6 +274,8 @@ export const tracks: Track[] = [
     duration: "7:35",
     videoId: "x1dQ1qLnVPc",
     spotifyUrl: "https://open.spotify.com/track/3nYFR7zzV7lKN1hO5mTa0p",
+    description:
+      "A traditional Langa-Manganiar sound carrying the emotional depth of Rajasthan's hereditary musicians. The song feels less like a performance and more like an old story being remembered through voice and melody.",
   },
   {
     id: "jal-jamna-ro-pani",
@@ -250,6 +286,8 @@ export const tracks: Track[] = [
     duration: "6:29",
     videoId: "HpfpHKHoWXk",
     spotifyUrl: "https://open.spotify.com/track/0HW3UnlmCzG5K5cIC4YawY",
+    description:
+      "Water becomes a beautiful image for distance, memory, and the emotional landscape of Rajasthan. The song connects everyday desert life with the tenderness of longing and the things people carry in their hearts.",
   },
   {
     id: "panihari",
@@ -260,6 +298,8 @@ export const tracks: Track[] = [
     duration: "4:30",
     videoId: "e8TX7j-tPF4",
     spotifyUrl: "https://open.spotify.com/track/5SR4MTY9ZOVqqmx3WyXVXw",
+    description:
+      "The panihari is the woman who carries water across Rajasthan's dry landscape, making an everyday task part of folk poetry. The song turns her journey into a portrait of strength, beauty, endurance, and rural life.",
   },
   {
     id: "umrao",
@@ -270,6 +310,8 @@ export const tracks: Track[] = [
     duration: "15:13",
     videoId: "0qnqxfwhv7g",
     spotifyUrl: "https://open.spotify.com/track/5MgAt4ybfjwfNw3pqxBG31",
+    description:
+      "A long-form folk narrative that lets its story unfold slowly, the way traditional tales once travelled through evening gatherings. Its extended melody gives space to longing, memory, and the emotional weight carried by the characters.",
   },
   {
     id: "chand-chadyo-gignar",
@@ -280,6 +322,8 @@ export const tracks: Track[] = [
     duration: "5:23",
     videoId: "0fF-ONW31Mc",
     spotifyUrl: "https://open.spotify.com/track/5O3aipPpooh44oVtIre5MM",
+    description:
+      "With the moon rising into the night sky, the song uses a familiar Rajasthani image to frame romance, beauty, and yearning. Its atmosphere feels like a quiet desert evening when the world slows beneath the moonlight.",
   },
   {
     id: "lagayi-dyo-hariya-baag",
@@ -290,16 +334,21 @@ export const tracks: Track[] = [
     duration: "4:41",
     videoId: "gEOQK7bwrtM",
     spotifyUrl: "https://open.spotify.com/track/0btGa7wqmNuXVUnaRZsZx8",
+    description:
+      "The image of a green garden blooming in a dry land becomes a metaphor for beauty, love, and renewal. It brings the rare freshness of green into the desert landscape and turns it into song.",
   },
   {
     id: "hariyala-banna",
     title: "HARIYALA BANNA",
-    artist: "by Ravindra Upadhyay, Kamal Choudhary, kunaal Vermaa, Kamal Choudhary",
+    artist:
+      "by Ravindra Upadhyay, Kamal Choudhary, kunaal Vermaa, Kamal Choudhary",
     category: "Traditional Folk",
     year: "2016",
     duration: "4:58",
     videoId: "bWmo_WtKstE",
     spotifyUrl: "https://open.spotify.com/track/5fcG4c48IYby78Qfs3VQyZ",
+    description:
+      "A festive song celebrating the groom, filled with the colour, affection, and excitement surrounding a Rajasthani wedding. It captures the moment when an entire household comes alive for a new beginning.",
   },
   {
     id: "piya-aao-to",
@@ -310,16 +359,21 @@ export const tracks: Track[] = [
     duration: "6:50",
     videoId: "gJTacBVk3ro",
     spotifyUrl: "https://open.spotify.com/track/0FuoPqR0TN4zK6R86nWpd2",
+    description:
+      "A simple call to a beloved to return, carrying the ache of waiting and the hope of reunion. The song turns separation into something tender, as if the voice itself could bring the absent one home.",
   },
   {
     id: "laal-peeli-akhiyaan",
     title: "Laal Peeli Akhiyaan",
-    artist: "by Honey Trooper, Anuj Chitlangia and Rapperiya Baalam",
+    artist:
+      "by Honey Trooper, Anuj Chitlangia and Rapperiya Baalam",
     category: "Folk Song",
     year: "2018",
     duration: "4:42",
     videoId: "vZVcjsvT_KA",
     spotifyUrl: "https://open.spotify.com/track/6BWM50D8c9GYaKu3PJOJ86",
+    description:
+      "A playful modern folk song centred around expressive eyes, attraction, and the teasing energy of romance. Traditional Rajasthani colour meets a contemporary sound without losing its desert character.",
   },
   {
     id: "kajaliyo",
@@ -328,8 +382,10 @@ export const tracks: Track[] = [
     category: "Hit Rajasthani Song",
     year: "2018",
     duration: "3:22",
-    videoId: "vZVcjsvT_KA",
+    videoId: "tPx-7Grk_UY",
     spotifyUrl: "https://open.spotify.com/track/5rxWxJUlJXiI45NIHBsFMm",
+    description:
+      "A lively romantic folk song drawing on the expressive imagery of kajal and the beauty of a beloved's eyes. Its catchy energy gives a traditional Rajasthani feeling a bright, modern form.",
   },
 ];
 
