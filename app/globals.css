@@ -105,6 +105,8 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transition: opacity 1.75s linear;
+  will-change: opacity;
 }
 
 /* Painted-gradient stand-in, shown only where the video above is
