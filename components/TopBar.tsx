@@ -9,7 +9,7 @@ interface TopBarProps {
 }
 
 export default function TopBar({ onToggleSongs, songsOpen }: TopBarProps) {
-  const [listeners, setListeners] = useState(481);
+  const [listeners, setListeners] = useState(170);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -36,25 +36,17 @@ export default function TopBar({ onToggleSongs, songsOpen }: TopBarProps) {
           className="pill-btn hidden rounded-full px-3 py-1.5 font-[family-name:var(--font-ui)] text-[0.65rem] tracking-wide text-cream/70 sm:inline-block"
           title="Coming soon"
         >
-          Spotify
+          Add to Spotify
         </span>
         <span
           className="pill-btn hidden rounded-full px-3 py-1.5 font-[family-name:var(--font-ui)] text-[0.65rem] tracking-wide text-cream/70 md:inline-block"
           title="Coming soon"
         >
-          YT Music
+          Add to YT Music
         </span>
         <span
           className="pill-btn hidden rounded-full px-3 py-1.5 font-[family-name:var(--font-ui)] text-[0.65rem] tracking-wide text-cream/70 lg:inline-block"
           title="Coming soon"
-        >
-          Playlists
-        </span>
-        <button
-          type="button"
-          onClick={onToggleSongs}
-          aria-pressed={songsOpen}
-          className="pill-btn rounded-full px-3 py-1.5 font-[family-name:var(--font-ui)] text-[0.65rem] tracking-wide text-cream/85"
         >
           Songs
         </button>
