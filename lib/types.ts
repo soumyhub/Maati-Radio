@@ -7,4 +7,5 @@ export interface Track {
   duration: string;
   videoId: string;
   spotifyUrl?: string;
+  description?: string;
 }
