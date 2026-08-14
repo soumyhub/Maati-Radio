@@ -97,7 +97,6 @@ export default function BackgroundVideo() {
         muted
         playsInline
         preload="auto"
-        poster="/bg/scene-wide.png"
         aria-hidden="true"
       >
         <source src={SRC} type="video/mp4" />
