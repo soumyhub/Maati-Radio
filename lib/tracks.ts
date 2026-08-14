@@ -1,17 +1,5 @@
 import type { Track } from "./types";
 
-/**
- * ⚠️ VIDEO IDS ARE PLACEHOLDERS.
- *
- * Every `videoId` below is a stand-in ("REPLACE_WITH_VIDEO_ID_n"). Per your
- * instructions, none of these were searched for or sourced — you'll supply
- * real, rights-cleared YouTube video IDs (ideally the rights holder's own
- * upload, with embedding enabled). See README.md for exactly how to swap
- * them in — it's a one-line change per track.
- *
- * This is the "initial example structure" list from the brief. The site is
- * built to comfortably hold ~20 tracks — just append more objects below.
- */
 export const tracks: Track[] = [
   {
     id: "kesariya-balam",
@@ -21,6 +9,7 @@ export const tracks: Track[] = [
     year: "2002",
     duration: "7:52",
     videoId: "_tDOaWIFfYI",
+    spotifyUrl: "https://open.spotify.com/track/2HeOEpNnWIsikoFPtkY9po",
   },
   {
     id: "mishri-ko-baag-laga-de-rasiya",
@@ -30,6 +19,7 @@ export const tracks: Track[] = [
     year: "2002",
     duration: "6:51",
     videoId: "PMWCFuGLHkA",
+    spotifyUrl: "https://open.spotify.com/track/5hoSlKgzmo2L7oeMZXxedm",
   },
   {
     id: "jalalo-bilalo",
@@ -39,6 +29,7 @@ export const tracks: Track[] = [
     year: "2023",
     duration: "5:28",
     videoId: "jRr-RVqP-l0",
+    spotifyUrl: "https://open.spotify.com/track/4ihRIDhpvXI8J5f9Csc6A6",
   },
   {
     id: "sundar-gori",
@@ -48,6 +39,7 @@ export const tracks: Track[] = [
     year: "2025",
     duration: "6:56",
     videoId: "araonQrXfpg",
+    spotifyUrl: "https://open.spotify.com/track/1JjwBwLOd02jRIoa4wrsYs",
   },
   {
     id: "naina-ro-lobhi",
@@ -57,6 +49,7 @@ export const tracks: Track[] = [
     year: "2000",
     duration: "7:28",
     videoId: "obJpe-T-nA4",
+    spotifyUrl: "https://open.spotify.com/track/2dVUPUGaJpoMOUKIHzWfC3",
   },
   {
     id: "boli-pyari-lage",
@@ -66,15 +59,17 @@ export const tracks: Track[] = [
     year: "2025",
     duration: "5:02",
     videoId: "4TSxPTfsF6U",
+    spotifyUrl: "https://open.spotify.com/track/0Q4g4OIYjbmhSGe1UayiHY",
   },
   {
-    id: "mumal",
-    title: "Mumal",
+    id: "moomal",
+    title: "Moomal",
     artist: "by Dapu Khan & Vibha Saraf",
     category: "Desert Ballad",
     year: "Traditional",
     duration: "4:52",
     videoId: "Ah1gS3ZtNrg",
+    spotifyUrl: "https://open.spotify.com/track/34LzbD5SLqVtnXyvooIruY",
   },
   {
     id: "savariya-parnaye",
@@ -84,6 +79,7 @@ export const tracks: Track[] = [
     year: "1996",
     duration: "7:44",
     videoId: "-OEh1EQ-vuM",
+    spotifyUrl: "https://open.spotify.com/track/2Lbc28ETd6b7iGnBetgfCc",
   },
   {
     id: "hiwde-ro-haar",
@@ -93,6 +89,7 @@ export const tracks: Track[] = [
     year: "2001",
     duration: "4:25",
     videoId: "zOxgU11gw8g",
+    spotifyUrl: "https://open.spotify.com/track/6duOTA2tv96iyo46JCZg5h",
   },
   {
     id: "aave-re-hichki",
@@ -102,6 +99,7 @@ export const tracks: Track[] = [
     year: "2020",
     duration: "9:25",
     videoId: "IwiG-aSfDLg",
+    spotifyUrl: "https://open.spotify.com/track/0bivfthRrQRvmGufTF7kxn",
   },
 ];
 
