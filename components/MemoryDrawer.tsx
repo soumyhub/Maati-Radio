@@ -2,31 +2,65 @@
 
 import { useState } from "react";
 
+type Panel = "share" | "wall" | null;
+
+const sampleStories = [
+  {
+    category: "A childhood memory",
+    message:
+      "My grandfather used to play folk songs on his old radio every evening. Somehow, this brought that sound back.",
+  },
+  {
+    category: "A feeling",
+    message:
+      "I have been away from Rajasthan for years. This website somehow felt like a small piece of home.",
+  },
+  {
+    category: "A story",
+    message:
+      "The sound of folk music always reminds me of summer evenings, rooftops, and sitting outside with family.",
+  },
+];
+
 export default function MemoryDrawer() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [activePanel, setActivePanel] = useState<Panel>(null);
   const [type, setType] = useState("A childhood memory");
   const [message, setMessage] = useState("");
+
+  const isOpen = activePanel !== null;
+
+  const openPanel = (panel: "share" | "wall") => {
+    setActivePanel(panel);
+  };
+
+  const closePanel = () => {
+    setActivePanel(null);
+  };
 
   return (
     <>
       {/* =========================================================
-          CLOSED SHARE TAB
+          RIGHT EDGE CONTROL
+          SHARE + MEMORY WALL
           ========================================================= */}
-      <button
-        type="button"
-        onClick={() => setIsOpen(true)}
-        aria-label="Share a memory or feedback"
-        className={`fixed right-0 top-1/2 z-[60] -translate-y-1/2 rounded-l-xl border border-r-0 border-cream/15 bg-[#241811]/85 px-2.5 py-4 text-cream/75 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-[#241811] hover:text-cream ${
+      <div
+        className={`fixed right-0 top-1/2 z-[60] -translate-y-1/2 overflow-hidden rounded-l-xl border border-r-0 border-cream/15 bg-[#241811]/85 shadow-lg backdrop-blur-sm transition-all duration-300 ${
           isOpen
             ? "pointer-events-none translate-x-full opacity-0"
             : "translate-x-0 opacity-100"
         }`}
       >
-        <span className="flex flex-col items-center gap-2">
-          {/* Note / memory icon */}
+        {/* SHARE */}
+        <button
+          type="button"
+          onClick={() => openPanel("share")}
+          aria-label="Share a memory or feedback"
+          className="group flex w-[54px] flex-col items-center gap-2 border-b border-cream/10 px-2.5 py-4 text-cream/70 transition-colors duration-300 hover:bg-[#241811] hover:text-cream"
+        >
+          {/* Note icon */}
           <svg
-            width="18"
-            height="18"
+            width="17"
+            height="17"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -41,22 +75,49 @@ export default function MemoryDrawer() {
             <path d="M8 16h5" />
           </svg>
 
-          <span className="font-[family-name:var(--font-ui)] text-[0.5rem] tracking-[0.18em] [writing-mode:vertical-rl]">
+          <span className="font-[family-name:var(--font-ui)] text-[0.48rem] tracking-[0.16em] [writing-mode:vertical-rl]">
             SHARE
           </span>
-        </span>
-      </button>
+        </button>
+
+        {/* MEMORY WALL */}
+        <button
+          type="button"
+          onClick={() => openPanel("wall")}
+          aria-label="Open memory wall"
+          className="group flex w-[54px] flex-col items-center gap-2 px-2.5 py-4 text-cream/70 transition-colors duration-300 hover:bg-[#241811] hover:text-cream"
+        >
+          {/* Small wall / people icon */}
+          <svg
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="9" cy="8" r="2.5" />
+            <circle cx="17" cy="9" r="2" />
+            <path d="M4 18c0-3 2.2-5 5-5s5 2 5 5" />
+            <path d="M14 14c.8-.7 1.8-1 3-1 2.2 0 3.8 1.5 4 4" />
+          </svg>
+
+          <span className="font-[family-name:var(--font-ui)] text-[0.43rem] tracking-[0.13em] [writing-mode:vertical-rl]">
+            MEMORY WALL
+          </span>
+        </button>
+      </div>
 
       {/* =========================================================
           SUBTLE BACKDROP
-          
-          Only appears when drawer is open.
-          Slight darkening + approximately 15–20% visual blur.
           ========================================================= */}
       <button
         type="button"
-        aria-label="Close memory panel"
-        onClick={() => setIsOpen(false)}
+        aria-label="Close panel"
+        onClick={closePanel}
         className={`fixed inset-0 z-[45] bg-black/15 backdrop-blur-[3px] transition-all duration-500 ${
           isOpen
             ? "pointer-events-auto opacity-100"
@@ -65,12 +126,12 @@ export default function MemoryDrawer() {
       />
 
       {/* =========================================================
-          RIGHT-SIDE MEMORY DRAWER
+          SHARE DRAWER
           ========================================================= */}
       <aside
-        aria-hidden={!isOpen}
+        aria-hidden={activePanel !== "share"}
         className={`fixed right-0 top-1/2 z-[50] w-[min(88vw,360px)] -translate-y-1/2 overflow-hidden rounded-l-2xl border border-r-0 border-cream/15 bg-[#241811]/90 text-cream shadow-2xl backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-          isOpen ? "translate-x-0" : "translate-x-full"
+          activePanel === "share" ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="max-h-[82vh] overflow-y-auto px-5 py-6 sm:px-6 sm:py-7">
@@ -89,10 +150,10 @@ export default function MemoryDrawer() {
               </h2>
             </div>
 
-            {/* Close button */}
+            {/* Close */}
             <button
               type="button"
-              onClick={() => setIsOpen(false)}
+              onClick={closePanel}
               aria-label="Close"
               className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-cream/15 text-cream/55 transition-colors duration-200 hover:border-cream/30 hover:text-cream"
             >
@@ -122,9 +183,7 @@ export default function MemoryDrawer() {
             felt while listening.
           </p>
 
-          {/* =====================================================
-              FORM
-              ===================================================== */}
+          {/* Form */}
           <div className="mt-6">
             {/* Category */}
             <label
@@ -206,9 +265,116 @@ export default function MemoryDrawer() {
             </button>
           </div>
 
-          {/* Bottom station label */}
+          {/* Bottom label */}
           <div className="mt-6 text-center">
             <p className="font-[family-name:var(--font-ui)] text-[0.5rem] tracking-[0.28em] text-cream/25">
+              94.7 FM · RAJASTHAN
+            </p>
+          </div>
+        </div>
+      </aside>
+
+      {/* =========================================================
+          MEMORY WALL DRAWER
+          ========================================================= */}
+      <aside
+        aria-hidden={activePanel !== "wall"}
+        className={`fixed right-0 top-1/2 z-[50] w-[min(88vw,360px)] -translate-y-1/2 overflow-hidden rounded-l-2xl border border-r-0 border-cream/15 bg-[#241811]/90 text-cream shadow-2xl backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          activePanel === "wall" ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="max-h-[82vh] overflow-y-auto px-5 py-6 sm:px-6 sm:py-7">
+          {/* Header */}
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <p className="font-[family-name:var(--font-ui)] text-[0.55rem] tracking-[0.3em] text-cream/45">
+                FROM THE LISTENERS
+              </p>
+
+              <h2
+                className="mt-2 font-[family-name:var(--font-devanagari)] text-2xl font-bold leading-tight text-cream sm:text-3xl"
+                lang="hi"
+              >
+                यादों की दीवार
+              </h2>
+            </div>
+
+            {/* Close */}
+            <button
+              type="button"
+              onClick={closePanel}
+              aria-label="Close"
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-cream/15 text-cream/55 transition-colors duration-200 hover:border-cream/30 hover:text-cream"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              >
+                <path d="M6 6l12 12" />
+                <path d="M18 6 6 18" />
+              </svg>
+            </button>
+          </div>
+
+          <p className="mt-5 font-[family-name:var(--font-display)] text-sm leading-relaxed text-cream/65">
+            Little memories, feelings, and stories left behind by people who
+            stopped by Maati Radio.
+          </p>
+
+          {/* Stories */}
+          <div className="mt-6 space-y-4">
+            {sampleStories.map((story, index) => (
+              <article
+                key={index}
+                className="rounded-xl border border-cream/10 bg-[#241811]/45 px-4 py-4"
+              >
+                {/* Anonymous user */}
+                <div className="flex items-center gap-3">
+                  {/* Anonymous avatar */}
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-cream/15 bg-[#18100c] text-cream/50">
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <circle cx="12" cy="8" r="3" />
+                      <path d="M5 20c.8-3.5 3.1-5 7-5s6.2 1.5 7 5" />
+                    </svg>
+                  </div>
+
+                  <div>
+                    <p className="font-[family-name:var(--font-ui)] text-[0.65rem] tracking-wide text-cream/75">
+                      Anonymous User
+                    </p>
+
+                    <p className="mt-0.5 font-[family-name:var(--font-ui)] text-[0.48rem] tracking-[0.16em] text-cream/35">
+                      {story.category.toUpperCase()}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Story */}
+                <p className="mt-4 font-[family-name:var(--font-display)] text-sm leading-relaxed text-cream/70">
+                  “{story.message}”
+                </p>
+              </article>
+            ))}
+          </div>
+
+          {/* Footer */}
+          <div className="mt-6 border-t border-cream/10 pt-5 text-center">
+            <p className="font-[family-name:var(--font-ui)] text-[0.5rem] tracking-[0.25em] text-cream/25">
               94.7 FM · RAJASTHAN
             </p>
           </div>
