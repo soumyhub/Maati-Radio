@@ -9,17 +9,21 @@ export default function MemoryDrawer() {
 
   return (
     <>
-      {/* Closed-state tab */}
+      {/* =========================================================
+          CLOSED SHARE TAB
+          ========================================================= */}
       <button
         type="button"
         onClick={() => setIsOpen(true)}
         aria-label="Share a memory or feedback"
-        className={`memory-tab fixed right-0 top-1/2 z-40 -translate-y-1/2 rounded-l-xl border border-r-0 border-cream/15 bg-[#241811]/75 px-2.5 py-4 text-cream/75 shadow-lg backdrop-blur-md transition-all duration-300 hover:bg-[#241811]/90 hover:text-cream ${
-          isOpen ? "pointer-events-none opacity-0" : "opacity-100"
+        className={`fixed right-0 top-1/2 z-[60] -translate-y-1/2 rounded-l-xl border border-r-0 border-cream/15 bg-[#241811]/85 px-2.5 py-4 text-cream/75 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-[#241811] hover:text-cream ${
+          isOpen
+            ? "pointer-events-none translate-x-full opacity-0"
+            : "translate-x-0 opacity-100"
         }`}
       >
         <span className="flex flex-col items-center gap-2">
-          {/* Small memory / note icon */}
+          {/* Note / memory icon */}
           <svg
             width="18"
             height="18"
@@ -37,58 +41,47 @@ export default function MemoryDrawer() {
             <path d="M8 16h5" />
           </svg>
 
-          <span
-            className="font-[family-name:var(--font-ui)] text-[0.5rem] tracking-[0.18em] [writing-mode:vertical-rl]"
-          >
+          <span className="font-[family-name:var(--font-ui)] text-[0.5rem] tracking-[0.18em] [writing-mode:vertical-rl]">
             SHARE
           </span>
         </span>
       </button>
 
-      {/* Backdrop */}
-      <button
-        type="button"
-        aria-label="Close memory panel"
-        onClick={() => setIsOpen(false)}
-        className={`fixed inset-0 z-40 bg-black/20 backdrop-blur-[1px] transition-opacity duration-500 ${
-          isOpen
-            ? "pointer-events-auto opacity-100"
-            : "pointer-events-none opacity-0"
-        }`}
-      />
-
-      {/* Drawer */}
+      {/* =========================================================
+          SMALL RIGHT-SIDE DRAWER
+          ========================================================= */}
       <aside
         aria-hidden={!isOpen}
-        className={`about-panel fixed right-0 top-0 z-50 h-dvh w-[min(88vw,430px)] overflow-y-auto border-l border-cream/10 shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        className={`fixed right-0 top-1/2 z-50 w-[min(88vw,360px)] -translate-y-1/2 overflow-hidden rounded-l-2xl border border-r-0 border-cream/15 bg-[#241811]/95 text-cream shadow-2xl backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex min-h-full flex-col px-6 py-8 sm:px-8 sm:py-10">
+        <div className="max-h-[82vh] overflow-y-auto px-5 py-6 sm:px-6 sm:py-7">
           {/* Header */}
-          <div className="flex items-start justify-between">
+          <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="font-[family-name:var(--font-ui)] text-[0.6rem] tracking-[0.35em] text-cream/50">
+              <p className="font-[family-name:var(--font-ui)] text-[0.55rem] tracking-[0.3em] text-cream/45">
                 FROM THE LISTENERS
               </p>
 
               <h2
-                className="mt-3 font-[family-name:var(--font-devanagari)] text-3xl font-bold leading-tight text-cream sm:text-4xl"
+                className="mt-2 font-[family-name:var(--font-devanagari)] text-2xl font-bold leading-tight text-cream sm:text-3xl"
                 lang="hi"
               >
                 कुछ छोड़ जाइए
               </h2>
             </div>
 
+            {/* Close */}
             <button
               type="button"
               onClick={() => setIsOpen(false)}
               aria-label="Close"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-cream/15 text-cream/60 transition-all duration-300 hover:border-cream/30 hover:text-cream"
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-cream/15 text-cream/55 transition-colors duration-200 hover:border-cream/30 hover:text-cream"
             >
               <svg
-                width="18"
-                height="18"
+                width="16"
+                height="16"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -102,21 +95,24 @@ export default function MemoryDrawer() {
           </div>
 
           {/* Intro */}
-          <p className="mt-6 font-[family-name:var(--font-display)] text-base leading-relaxed text-cream/75 sm:text-lg">
+          <p className="mt-5 font-[family-name:var(--font-display)] text-sm leading-relaxed text-cream/75">
             A memory. A feeling. A thought about home.
           </p>
 
-          <p className="mt-3 font-[family-name:var(--font-display)] text-sm leading-relaxed text-cream/55 sm:text-base">
+          <p className="mt-2.5 font-[family-name:var(--font-display)] text-xs leading-relaxed text-cream/55 sm:text-sm">
             If Maati Radio reminded you of something, we'd love to hear it.
             Share a childhood memory, a feeling, or simply tell us what you
             felt while listening.
           </p>
 
-          {/* Form */}
-          <div className="mt-8">
+          {/* =====================================================
+              FORM
+              ===================================================== */}
+          <div className="mt-6">
+            {/* Type */}
             <label
               htmlFor="memory-type"
-              className="font-[family-name:var(--font-ui)] text-[0.6rem] tracking-[0.25em] text-cream/50"
+              className="font-[family-name:var(--font-ui)] text-[0.55rem] tracking-[0.22em] text-cream/45"
             >
               THIS IS
             </label>
@@ -125,7 +121,7 @@ export default function MemoryDrawer() {
               id="memory-type"
               value={type}
               onChange={(e) => setType(e.target.value)}
-              className="mt-2 w-full appearance-none rounded-xl border border-cream/15 bg-[#241811]/40 px-4 py-3 font-[family-name:var(--font-ui)] text-sm text-cream/80 outline-none backdrop-blur-sm transition-colors focus:border-cream/30"
+              className="mt-2 w-full appearance-none rounded-lg border border-cream/15 bg-[#241811]/75 px-3.5 py-2.5 font-[family-name:var(--font-ui)] text-xs text-cream/80 outline-none transition-colors focus:border-cream/30"
             >
               <option>A childhood memory</option>
               <option>A feeling</option>
@@ -134,9 +130,10 @@ export default function MemoryDrawer() {
               <option>Something else</option>
             </select>
 
+            {/* Message */}
             <label
               htmlFor="memory-message"
-              className="mt-6 block font-[family-name:var(--font-ui)] text-[0.6rem] tracking-[0.25em] text-cream/50"
+              className="mt-5 block font-[family-name:var(--font-ui)] text-[0.55rem] tracking-[0.22em] text-cream/45"
             >
               YOUR WORDS
             </label>
@@ -146,29 +143,30 @@ export default function MemoryDrawer() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Write something you remember..."
-              rows={7}
+              rows={5}
               maxLength={1000}
-              className="mt-2 w-full resize-none rounded-xl border border-cream/15 bg-[#241811]/40 px-4 py-4 font-[family-name:var(--font-display)] text-sm leading-relaxed text-cream/85 outline-none placeholder:text-cream/30 backdrop-blur-sm transition-colors focus:border-cream/30 sm:text-base"
+              className="mt-2 w-full resize-none rounded-lg border border-cream/15 bg-[#241811]/75 px-3.5 py-3 font-[family-name:var(--font-display)] text-sm leading-relaxed text-cream/85 outline-none placeholder:text-cream/30 transition-colors focus:border-cream/30"
             />
 
-            <div className="mt-2 text-right">
-              <span className="font-[family-name:var(--font-ui)] text-[0.55rem] tracking-[0.12em] text-cream/35">
+            {/* Character count */}
+            <div className="mt-1.5 text-right">
+              <span className="font-[family-name:var(--font-ui)] text-[0.5rem] tracking-[0.1em] text-cream/30">
                 {message.length}/1000
               </span>
             </div>
 
             {/* Anonymous notice */}
-            <div className="mt-5 flex gap-3 rounded-xl border border-cream/10 bg-[#241811]/25 px-4 py-3">
+            <div className="mt-4 flex gap-2.5 rounded-lg border border-cream/10 bg-[#241811]/55 px-3.5 py-2.5">
               <svg
-                width="17"
-                height="17"
+                width="16"
+                height="16"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="1.4"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="mt-0.5 shrink-0 text-cream/50"
+                className="mt-0.5 shrink-0 text-cream/45"
                 aria-hidden="true"
               >
                 <path d="M12 3a6 6 0 0 0-6 6v3a6 6 0 0 0 12 0V9a6 6 0 0 0-6-6Z" />
@@ -176,7 +174,7 @@ export default function MemoryDrawer() {
                 <path d="M12 15v6" />
               </svg>
 
-              <p className="font-[family-name:var(--font-ui)] text-[0.65rem] leading-relaxed tracking-wide text-cream/45">
+              <p className="font-[family-name:var(--font-ui)] text-[0.55rem] leading-relaxed tracking-wide text-cream/45">
                 Shared anonymously. No name or personal details are required.
               </p>
             </div>
@@ -185,15 +183,15 @@ export default function MemoryDrawer() {
             <button
               type="button"
               disabled={!message.trim()}
-              className="mt-6 w-full rounded-xl border border-cream/20 bg-cream/10 px-5 py-3.5 font-[family-name:var(--font-ui)] text-xs tracking-[0.2em] text-cream transition-all duration-300 hover:bg-cream/15 disabled:cursor-not-allowed disabled:opacity-30"
+              className="mt-5 w-full rounded-lg border border-cream/20 bg-cream/10 px-4 py-3 font-[family-name:var(--font-ui)] text-[0.6rem] tracking-[0.2em] text-cream transition-all duration-300 hover:bg-cream/15 disabled:cursor-not-allowed disabled:opacity-30"
             >
               LEAVE IT HERE
             </button>
           </div>
 
-          {/* Bottom note */}
-          <div className="mt-auto pt-12 text-center">
-            <p className="font-[family-name:var(--font-ui)] text-[0.55rem] tracking-[0.3em] text-cream/30">
+          {/* Bottom station label */}
+          <div className="mt-6 text-center">
+            <p className="font-[family-name:var(--font-ui)] text-[0.5rem] tracking-[0.28em] text-cream/25">
               94.7 FM · RAJASTHAN
             </p>
           </div>
