@@ -27,7 +27,7 @@ const yatraOne = Yatra_One({
 });
 
 export const metadata: Metadata = {
-  title: "MĀTI RADIO — Rajasthan · 94.7 FM",
+  title: "MAATI RADIO — Rajasthan Folk · 94.7 FM",
   description:
     "An old radio, still broadcasting from Rajasthan. Folk music, desert wind, and courtyard memory — tune in.",
 };
