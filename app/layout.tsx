@@ -34,6 +34,10 @@ export const metadata: Metadata = {
   description:
     "A little piece of Rajasthan on the internet — folk music, desert evenings, old radios, and memories of home.",
 
+  verification: {
+    google: "JI7JIHzkBg21RRj3QaK-ED1SIixGgD8oiRXBZXRiDCE",
+  },
+
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",
