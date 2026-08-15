@@ -27,9 +27,37 @@ const yatraOne = Yatra_One({
 });
 
 export const metadata: Metadata = {
-  title: "MAATI RADIO — Rajasthan Folk · 94.7 FM",
+  metadataBase: new URL("https://maati-radio.vercel.app"),
+
+  title: "Maati Radio — Rajasthan · 94.7 FM",
+
   description:
-    "An old radio, still broadcasting from Rajasthan. Folk music, desert wind, and courtyard memory — tune in.",
+    "A little piece of Rajasthan on the internet — folk music, desert evenings, old radios, and memories of home.",
+
+  openGraph: {
+    title: "Maati Radio — Rajasthan · 94.7 FM",
+    description:
+      "A little piece of Rajasthan on the internet — folk music, desert evenings, old radios, and memories of home.",
+    url: "https://maati-radio.vercel.app",
+    siteName: "Maati Radio",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 627,
+        alt: "Maati Radio — Rajasthan Folk Music",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Maati Radio — Rajasthan · 94.7 FM",
+    description:
+      "A little piece of Rajasthan on the internet — folk music, desert evenings, old radios, and memories of home.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export const viewport: Viewport = {
@@ -45,7 +73,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${plexMono.variable} ${yatraOne.variable}`}>
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${plexMono.variable} ${yatraOne.variable}`}
+    >
       <body>
         {children}
         <Analytics />
