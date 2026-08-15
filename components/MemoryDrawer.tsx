@@ -17,6 +17,7 @@ export default function MemoryDrawer() {
 
   // Share form
   const [type, setType] = useState("A childhood memory");
+  const [typeOpen, setTypeOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
@@ -293,22 +294,54 @@ export default function MemoryDrawer() {
                 THIS IS
               </label>
 
-              <select
-                id="memory-type"
-                value={type}
-                onChange={(e) => {
-                  setType(e.target.value);
-                  setStatus("idle");
-                }}
-                disabled={isSubmitting}
-                className="mt-2 w-full appearance-none rounded-xl border border-cream/15 bg-[#241811]/60 px-4 py-3 font-[family-name:var(--font-ui)] text-sm text-cream/80 outline-none backdrop-blur-sm transition-colors focus:border-cream/30 disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                <option>A childhood memory</option>
-                <option>A feeling</option>
-                <option>Feedback</option>
-                <option>A story</option>
-                <option>Something else</option>
-              </select>
+              <div className="relative mt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!isSubmitting) {
+                      setTypeOpen((open) => !open);
+                    }
+                  }}
+                  disabled={isSubmitting}
+                  aria-haspopup="listbox"
+                  aria-expanded={typeOpen}
+                  aria-controls="memory-type-options"
+                  className="flex w-full items-center justify-between rounded-xl border border-cream/15 bg-[#241811]/60 px-4 py-3 text-left font-[family-name:var(--font-ui)] text-sm text-cream/80 outline-none backdrop-blur-sm transition-colors hover:border-cream/30 focus:border-cream/30 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  <span>{type}</span>
+                  <span className="ml-4 shrink-0 text-lg leading-none text-cream/60" aria-hidden="true">
+                    {typeOpen ? "−" : "⌄"}
+                  </span>
+                </button>
+
+                {typeOpen && !isSubmitting && (
+                  <div
+                    id="memory-type-options"
+                    role="listbox"
+                    aria-label="Memory type"
+                    className="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-xl border border-cream/15 bg-[#241811]/95 shadow-2xl backdrop-blur-md"
+                  >
+                    {["A childhood memory", "A feeling", "Feedback", "A story", "Something else"].map((option) => (
+                      <button
+                        key={option}
+                        type="button"
+                        role="option"
+                        aria-selected={type === option}
+                        onClick={() => {
+                          setType(option);
+                          setTypeOpen(false);
+                          setStatus("idle");
+                        }}
+                        className={`block w-full px-4 py-3 text-left font-[family-name:var(--font-ui)] text-sm transition-colors hover:bg-cream/10 ${
+                          type === option ? "text-cream" : "text-cream/65"
+                        }`}
+                      >
+                        {option}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
 
               <label
                 htmlFor="memory-message"
