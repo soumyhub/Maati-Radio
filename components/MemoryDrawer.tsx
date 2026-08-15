@@ -49,6 +49,9 @@ export default function MemoryDrawer() {
 
       {/* =========================================================
           SMALL RIGHT-SIDE DRAWER
+          
+          No full-screen backdrop.
+          The rest of the website remains completely visible.
           ========================================================= */}
       <aside
         aria-hidden={!isOpen}
@@ -72,7 +75,7 @@ export default function MemoryDrawer() {
               </h2>
             </div>
 
-            {/* Close */}
+            {/* Close button */}
             <button
               type="button"
               onClick={() => setIsOpen(false)}
@@ -109,7 +112,7 @@ export default function MemoryDrawer() {
               FORM
               ===================================================== */}
           <div className="mt-6">
-            {/* Type */}
+            {/* Category */}
             <label
               htmlFor="memory-type"
               className="font-[family-name:var(--font-ui)] text-[0.55rem] tracking-[0.22em] text-cream/45"
