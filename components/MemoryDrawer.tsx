@@ -48,14 +48,28 @@ export default function MemoryDrawer() {
       </button>
 
       {/* =========================================================
-          SMALL RIGHT-SIDE DRAWER
+          SUBTLE BACKDROP
           
-          No full-screen backdrop.
-          The rest of the website remains completely visible.
+          Only appears when drawer is open.
+          Slight darkening + approximately 15–20% visual blur.
+          ========================================================= */}
+      <button
+        type="button"
+        aria-label="Close memory panel"
+        onClick={() => setIsOpen(false)}
+        className={`fixed inset-0 z-[45] bg-black/15 backdrop-blur-[3px] transition-all duration-500 ${
+          isOpen
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0"
+        }`}
+      />
+
+      {/* =========================================================
+          RIGHT-SIDE MEMORY DRAWER
           ========================================================= */}
       <aside
         aria-hidden={!isOpen}
-        className={`fixed right-0 top-1/2 z-50 w-[min(88vw,360px)] -translate-y-1/2 overflow-hidden rounded-l-2xl border border-r-0 border-cream/15 bg-[#241811]/95 text-cream shadow-2xl backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        className={`fixed right-0 top-1/2 z-[50] w-[min(88vw,360px)] -translate-y-1/2 overflow-hidden rounded-l-2xl border border-r-0 border-cream/15 bg-[#241811]/90 text-cream shadow-2xl backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -124,7 +138,7 @@ export default function MemoryDrawer() {
               id="memory-type"
               value={type}
               onChange={(e) => setType(e.target.value)}
-              className="mt-2 w-full appearance-none rounded-lg border border-cream/15 bg-[#241811]/75 px-3.5 py-2.5 font-[family-name:var(--font-ui)] text-xs text-cream/80 outline-none transition-colors focus:border-cream/30"
+              className="mt-2 w-full appearance-none rounded-lg border border-cream/15 bg-[#241811]/70 px-3.5 py-2.5 font-[family-name:var(--font-ui)] text-xs text-cream/80 outline-none transition-colors focus:border-cream/30"
             >
               <option>A childhood memory</option>
               <option>A feeling</option>
@@ -148,7 +162,7 @@ export default function MemoryDrawer() {
               placeholder="Write something you remember..."
               rows={5}
               maxLength={1000}
-              className="mt-2 w-full resize-none rounded-lg border border-cream/15 bg-[#241811]/75 px-3.5 py-3 font-[family-name:var(--font-display)] text-sm leading-relaxed text-cream/85 outline-none placeholder:text-cream/30 transition-colors focus:border-cream/30"
+              className="mt-2 w-full resize-none rounded-lg border border-cream/15 bg-[#241811]/70 px-3.5 py-3 font-[family-name:var(--font-display)] text-sm leading-relaxed text-cream/85 outline-none placeholder:text-cream/30 transition-colors focus:border-cream/30"
             />
 
             {/* Character count */}
@@ -159,7 +173,7 @@ export default function MemoryDrawer() {
             </div>
 
             {/* Anonymous notice */}
-            <div className="mt-4 flex gap-2.5 rounded-lg border border-cream/10 bg-[#241811]/55 px-3.5 py-2.5">
+            <div className="mt-4 flex gap-2.5 rounded-lg border border-cream/10 bg-[#241811]/50 px-3.5 py-2.5">
               <svg
                 width="16"
                 height="16"
