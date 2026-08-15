@@ -6,11 +6,13 @@ import BrandMark from "./BrandMark";
 import PlayerBar from "./PlayerBar";
 import SongsDrawer from "./SongsDrawer";
 import TrackMeaning from "./TrackMeaning";
+import MemoryDrawer from "./MemoryDrawer";
 import { tracks } from "../lib/tracks";
 
 export default function RadioExperience() {
   const [trackIndex, setTrackIndex] = useState(0);
   const [songsOpen, setSongsOpen] = useState(false);
+  const [memoryOpen, setMemoryOpen] = useState(false);
 
   const currentTrack = tracks[trackIndex];
 
@@ -95,10 +97,42 @@ export default function RadioExperience() {
             <span>YT Music</span>
           </a>
 
-          {/* Track meaning is anchored directly below the button row */}
+          {/* Track meaning */}
           <TrackMeaning track={currentTrack} />
         </div>
       </div>
+
+      {/* Anonymous memories / feedback */}
+      <button
+        type="button"
+        onClick={() => setMemoryOpen(true)}
+        aria-label="Share a memory or feedback"
+        title="Share a memory or feedback"
+        className="fixed right-0 top-1/2 z-40 flex h-12 w-9 -translate-y-1/2 items-center justify-center rounded-l-xl border border-r-0 border-cream/10 bg-[#241811]/75 text-cream/70 shadow-lg backdrop-blur-md transition-all duration-300 hover:w-11 hover:bg-[#241811]/90 hover:text-cream"
+      >
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H8l-4 3v-5.2A7.5 7.5 0 1 1 20 11.5Z" />
+          <path d="M8 11.5h.01" />
+          <path d="M12 11.5h.01" />
+          <path d="M16 11.5h.01" />
+        </svg>
+      </button>
+
+      {/* Anonymous memory / feedback drawer */}
+      <MemoryDrawer
+        open={memoryOpen}
+        onClose={() => setMemoryOpen(false)}
+      />
     </>
   );
 }
