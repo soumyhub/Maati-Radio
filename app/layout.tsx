@@ -34,6 +34,11 @@ export const metadata: Metadata = {
   description:
     "A little piece of Rajasthan on the internet — folk music, desert evenings, old radios, and memories of home.",
 
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
+
   openGraph: {
     title: "Maati Radio — Rajasthan · 94.7 FM",
     description:
