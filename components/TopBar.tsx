@@ -4,9 +4,7 @@ import { useEffect, useState } from "react";
 import Clock from "./Clock";
 
 export default function TopBar() {
-  const [listeners, setListeners] = useState(() =>
-    Math.floor(Math.random() * 61) + 140
-  );
+  const [listeners, setListeners] = useState(153);
 
   useEffect(() => {
     const id = setInterval(() => {
