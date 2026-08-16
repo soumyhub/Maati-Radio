@@ -62,13 +62,13 @@ export default function TopBar() {
           onClick={toggleFullscreen}
           aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
           title={isFullscreen ? "Exit fullscreen" : "Fullscreen"}
-          className="group flex items-center gap-2 rounded-full border border-cream/15 bg-[#241811]/55 px-4 py-2 font-[family-name:var(--font-ui)] text-xs tracking-[0.12em] text-cream/75 shadow-lg backdrop-blur-md transition-all duration-300 hover:border-cream/30 hover:bg-[#241811]/80 hover:text-cream sm:text-sm"
+          className="group flex items-center gap-2 rounded-full border border-cream/15 bg-[#241811]/55 px-3 py-1.5 font-[family-name:var(--font-ui)] text-xs tracking-[0.12em] text-cream/75 shadow-lg backdrop-blur-md transition-all duration-300 hover:border-cream/30 hover:bg-[#241811]/80 hover:text-cream sm:text-xs"
         >
           {isFullscreen ? (
             /* Exit fullscreen icon */
             <svg
-              width="15"
-              height="15"
+              width="13"
+              height="13"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -89,8 +89,8 @@ export default function TopBar() {
           ) : (
             /* Fullscreen icon */
             <svg
-              width="15"
-              height="15"
+              width="13"
+              height="13"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
