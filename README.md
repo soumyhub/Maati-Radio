@@ -1,4 +1,5 @@
 # MAATI RADIO — Rajasthan 🎙️
+<img width="2940" height="1844" alt="og-image" src="https://github.com/user-attachments/assets/a90967c7-b7d4-46d2-b8d6-1b8d9dfad291" />
 
 > **A little piece of home, on the internet.**
 
