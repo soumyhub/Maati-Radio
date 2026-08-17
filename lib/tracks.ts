@@ -28,7 +28,7 @@ export const tracks: Track[] = [
   {
     id: "jalalo-bilalo",
     title: "JALALO BILALO-A (Longing Of A Woman In Love)",
-    artist: "by RAAHEIN Gharana x Shefali Khanna",
+    artist: "by RAAHEIN Gharana × Shefali Khanna",
     category: "Rajasthani Folk",
     year: "2023",
     duration: "5:28",
@@ -173,7 +173,7 @@ export const tracks: Track[] = [
     id: "kurjan",
     title: "Kurjan",
     artist: "by Seema Mishra",
-    category: "Slow peaceful",
+    category: "Slow & Peaceful",
     year: "2001",
     duration: "9:26",
     videoId: "GMwzFdg1UrU",
@@ -292,7 +292,7 @@ export const tracks: Track[] = [
   {
     id: "panihari",
     title: "Panihari",
-    artist: "by Arun Rao · Maina Rao · Sushila Devi · suyash",
+    artist: "by Arun Rao · Maina Rao · Sushila Devi · Suyash",
     category: "Folk Song",
     year: "2025",
     duration: "4:30",
@@ -340,8 +340,7 @@ export const tracks: Track[] = [
   {
     id: "hariyala-banna",
     title: "HARIYALA BANNA",
-    artist:
-      "by Ravindra Upadhyay, Kamal Choudhary, kunaal Vermaa, Kamal Choudhary",
+    artist: "by Ravindra Upadhyay, Kamal Choudhary & Kunaal Vermaa",
     category: "Traditional Folk",
     year: "2016",
     duration: "4:58",
@@ -365,8 +364,7 @@ export const tracks: Track[] = [
   {
     id: "laal-peeli-akhiyaan",
     title: "Laal Peeli Akhiyaan",
-    artist:
-      "by Honey Trooper, Anuj Chitlangia and Rapperiya Baalam",
+    artist: "by Honey Trooper, Anuj Chitlangia and Rapperiya Baalam",
     category: "Folk Song",
     year: "2018",
     duration: "4:42",
