@@ -248,6 +248,7 @@ MAATI-RADIO/
 ├── README.md
 └── tsconfig.json
 ```
+
 🎬 How the Experience Works
 
 The main page is built around a fixed cinematic Hero.
@@ -272,29 +273,30 @@ The main page is built around a fixed cinematic Hero.
                   └─────────────────────┘
 
 The scroll position is converted into a 0 → 1 reveal value and exposed through the CSS custom property:
-
+```
 --reveal
-
+```
 This allows the Hero, brand mark, and About section to transition smoothly without forcing React to re-render on every scroll frame.
 
 🎥 Background Experience
 
 The background uses a looping video:
-
+```
 <video
   autoPlay
   muted
   loop
   playsInline
 />
-
+```
 The video uses:
-
+```
 object-fit: cover;
-
+```
 This allows the visual scene to adapt across different screen orientations.
 
 A poster image provides a visual fallback while the video is loading.
+
 
 🎨 Design Philosophy
 
@@ -312,54 +314,72 @@ Nostalgia
 The goal wasn't to recreate Rajasthan literally.
 
 It was to recreate:
-
+```
 the feeling of remembering Rajasthan.
-
+```
 🔐 Environment Variables
 
 MAATI RADIO uses Supabase for the Memory Wall.
 
 Create a .env.local file in the project root:
-
+```
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
 Important
-
-Never commit .env.local or private credentials to GitHub.
+```
+Never commit ```.env.local``` or private credentials to GitHub.
 
 The repository excludes local environment files through .gitignore:
-
+```
 .env.local
 .env*.local
+```
+
 🚀 Run Locally
+
 1. Clone the repository
+```
 git clone https://github.com/soumyhub/Maati-Radio.git
+```
 2. Enter the project
+```
 cd Maati-Radio
+```
 3. Install dependencies
+```
 npm install
+```
 4. Configure environment variables
 
-Create .env.local and add the required Supabase variables.
+Create ```.env.local``` and add the required Supabase variables.
 
 5. Start the development server
+```
 npm run dev
+```
+
 
 Open:
 
-http://localhost:3000
+```http://localhost:3000```
+
+
 🏭 Production Build
 
 Create an optimized production build:
 
-npm run build
+```npm run build```
 
 Run the production build locally:
 
-npm run start
+```npm run start```
+
+
 ☁️ Deployment
 
 MAATI RADIO is deployed using Vercel.
+
+
 
 Production:
 
@@ -367,23 +387,26 @@ Production:
 
 The project is connected to the main branch, allowing production deployments to be triggered by changes pushed to the repository.
 
+
 🧠 What I Learned
 
 Building MAATI RADIO was more than just putting together a music player.
 
 Some of the biggest things I explored:
 
-Designing an experience around cultural identity
-Building interactive audio interfaces
-Creating cinematic scroll interactions
-Working with browser fullscreen APIs
-Building responsive layouts for different orientations
-Connecting a frontend application to Supabase
-Designing user-generated content features
-Handling client-side state and browser APIs
-Debugging hydration issues in Next.js
-Working with Git, GitHub, and Vercel deployments
-Thinking about how technology can preserve a feeling, not just deliver functionality
+- Designing an experience around cultural identity
+- Building interactive audio interfaces
+- Creating cinematic scroll interactions
+- Working with browser fullscreen APIs
+- Building responsive layouts for different orientations
+- Connecting a frontend application to Supabase
+- Designing user-generated content features
+- Handling client-side state and browser APIs
+- Debugging hydration issues in Next.js
+- Working with Git, GitHub, and Vercel deployments
+- Thinking about how technology can preserve a feeling, not just deliver functionality
+
+
 ❤️ Why I Built It
 
 Sometimes the best projects aren't completely new ideas.
@@ -398,39 +421,44 @@ But somewhere along the way, it became an attempt to answer a simple question:
 
 Can a website make someone feel a little closer to home?
 
+
 📸 Preview
 
 The project combines:
 
-A cinematic landing experience
-Interactive radio controls
-Rajasthani-inspired visuals
-Memory Wall
-Fullscreen mode
-Responsive layouts
-Cinematic scroll interactions
+- A cinematic landing experience
+- Interactive radio controls
+- Rajasthani-inspired visuals
+- Memory Wall
+- Fullscreen mode
+- Responsive layouts
+- Cinematic scroll interactions
 
 The preview above shows the main MAATI RADIO experience.
+
 
 🔮 Future Ideas
 
 Some things I'd like to explore in future versions:
 
-More Rajasthani folk tracks
-Curated regional stations
-More interactive cultural stories
-Better memory discovery
-Animated visualizers
-More regional languages
-Community features
-Improved accessibility
-Offline / PWA support
+- More Rajasthani folk tracks
+- Curated regional stations
+- More interactive cultural stories
+- Better memory discovery
+- Animated visualizers
+- More regional languages
+- Community features
+- Improved accessibility
+- Offline / PWA support
+
+
 👨‍💻 Built By
 Soumy Paliwal
 
 A personal creative-development project combining:
 
 Web Development × Music × Design × Rajasthan × Nostalgia
+
 
 ⭐ Support
 
