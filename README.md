@@ -455,6 +455,8 @@ Some things I'd like to explore in future versions:
 👨‍💻 Built By
 Soumy Paliwal
 
+LinkedIn: https://www.linkedin.com/in/soumypaliwal
+
 A personal creative-development project combining:
 
 Web Development × Music × Design × Rajasthan × Nostalgia
